@@ -646,100 +646,20 @@ details.qa summary:hover{color:var(--emerald-deep)}
 .tm__x:hover{color:var(--text);border-color:var(--rule-2);background:var(--paper-2)}
 
 .tm__form{padding:22px 28px 28px}
-.tm__row{margin-bottom:15px}
-.tm__row label{
-  display:block;font-size:12.5px;font-weight:600;
-  color:var(--text-2);margin-bottom:6px;letter-spacing:-.005em;
-}
-.tm__req{color:var(--emerald-deep);margin-left:2px}
-.tm__opt{
-  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--text-3);margin-left:6px;
-}
 
-.tm__input,.tm__select{
-  width:100%;font-family:var(--body);font-size:15px;color:var(--text);
-  background:var(--paper-2);border:1px solid var(--rule-2);border-radius:10px;
-  padding:12px 13px;transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
-  -webkit-appearance:none;appearance:none;
-}
-.tm__input::placeholder{color:var(--text-3)}
-.tm__input:focus,.tm__select:focus{
-  outline:none;background:var(--paper);border-color:var(--emerald);
-  box-shadow:0 0 0 3px rgba(0,196,140,.18);
-}
-textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
-
-/* phone: country-code select + national number, one visual control */
-.tm__phone{display:grid;grid-template-columns:132px 1fr;gap:8px}
-.tm__select{
-  font-family:var(--mono);font-size:13.5px;padding-right:26px;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2378899F' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 11px center;
-}
-.tm__hint{display:block;font-size:11.5px;color:var(--text-3);margin-top:6px}
-
-/* validation */
-.tm__row.has-error .tm__input,
-.tm__row.has-error .tm__select{
-  border-color:#E5484D;background:rgba(229,72,77,.05);
-}
-.tm__row.has-error .tm__input:focus,
-.tm__row.has-error .tm__select:focus{box-shadow:0 0 0 3px rgba(229,72,77,.16)}
-.tm__err{
-  display:none;font-size:12px;color:#E5484D;margin-top:6px;line-height:1.4;
-}
-.tm__row.has-error .tm__err{display:block}
-
-/* honeypot — off-screen, never announced, never focusable */
-.tm__hp{
-  position:absolute!important;width:1px;height:1px;overflow:hidden;
-  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
-}
-
+/* .tm__submit is now the WhatsApp <a> button — full width, same spacing as
+   the old form's submit button had. */
 .tm__submit{width:100%;margin-top:6px;position:relative}
-.tm__submit[disabled]{opacity:.62;cursor:not-allowed;transform:none}
-.tm__spin{
-  width:15px;height:15px;border-radius:50%;
-  border:2px solid rgba(3,35,26,.28);border-top-color:#03231A;
-  animation:tmspin .7s linear infinite;
-}
-@keyframes tmspin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.tm__spin{animation-duration:1.8s}}
 
 .tm__legal{
   font-size:11.5px;line-height:1.5;color:var(--text-3);
   margin:14px 0 0;text-align:center;
 }
 
-/* form-level error banner */
-.tm__alert{
-  display:none;gap:9px;align-items:flex-start;
-  padding:11px 13px;border-radius:10px;margin-bottom:16px;
-  font-size:13px;line-height:1.45;
-  background:rgba(229,72,77,.09);border:1px solid rgba(229,72,77,.32);color:#C93B40;
-}
-.tm__alert.is-shown{display:flex}
-:root:not([data-theme="light"]) .tm__alert{color:#FF9CA0}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .tm__alert{color:#C93B40}}
-
-/* success state */
-.tm__done{padding:34px 28px 30px;text-align:center;display:none}
-.tm__done.is-shown{display:block}
-.tm__tick{
-  width:52px;height:52px;margin:0 auto 16px;border-radius:50%;
-  display:grid;place-items:center;color:#03231A;background:var(--emerald);
-  box-shadow:0 10px 26px -10px rgba(0,196,140,.8);
-}
-.tm__done h3{font-size:21px;letter-spacing:-.028em;margin-bottom:9px}
-.tm__done p{font-size:14.5px;line-height:1.55;color:var(--text-2);margin:0 auto;max-width:38ch}
-.tm__done .btn{margin-top:22px}
-
 @media (max-width:520px){
   .tm__head{padding:22px 20px 0}
-  .tm__form,.tm__done{padding-left:20px;padding-right:20px}
+  .tm__form{padding-left:20px;padding-right:20px}
   .tm__title{font-size:21px}
-  .tm__phone{grid-template-columns:112px 1fr}
 }
 
 /* ------------------------------------------------------- mobile nav button */
@@ -882,13 +802,6 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
      they are: that block deliberately imitates a dense test app, and scaling
      its chrome up would break both the illusion and its internal layout.) */
   .flag__tag { font-size: 11px; }
-
-  /* Form fields under 16px make iOS Safari zoom the whole page in on focus —
-     the classic "keyboard opens, page lurches and re-centres" jank. Applied
-     to the free-text fields only: .tm__select is the 112–132px country-code
-     box, sized deliberately tight around mono text like "+971  UAE" — 16px
-     there truncates the country name instead of fixing anything. */
-  .tm__input { font-size: 16px; }
 }
 
 /* Any :hover rule is a tap on a touchscreen, and unlike a mouse there's no
@@ -1074,7 +987,7 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
         </div>
 
         <div class="hero__note rv">
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>14-day trial, full platform</span>
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>10-day trial, full platform</span>
           <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>No card required</span>
           <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in 48 hours</span>
         </div>
@@ -1429,7 +1342,7 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
           </a>
         </div>
         <p class="hero__note" style="justify-content:center;margin-top:18px">
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>14-day trial</span>
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>10-day trial</span>
           <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>No card required</span>
           <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Cancel anytime</span>
         </p>
@@ -1680,458 +1593,42 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
     </button>
 
     <!-- ---------------------------------------------------- form view -->
-    <div class="tm__view" data-tm-view="form">
+    <div class="tm__view">
       <div class="tm__head">
-        <div class="tm__eyebrow">14-day free trial</div>
+        <div class="tm__eyebrow">10-day free trial</div>
         <h3 class="tm__title" id="tmTitle">Start your free trial</h3>
         <p class="tm__sub" id="tmSub">
-          Tell us where to set things up. We'll confirm on WhatsApp straight away
-          and have your institute running a hybrid mock this week.
+          Message us on WhatsApp with your institute's name and we'll have your
+          hybrid mock live within 48 hours — no forms to fill in.
         </p>
       </div>
 
-      <!-- Placeholder convention: every field has a visible <label>, so a
-           placeholder that merely repeats it is noise (and disappears the
-           moment the user types). Placeholders are therefore EMPTY except
-           where a format is genuinely non-obvious — the phone field, whose
-           hint is generated per country. Never put realistic-looking names,
-           emails, numbers or addresses here: they read as pre-filled data. -->
-      <form class="tm__form" id="trialForm" novalidate>
-        <div class="tm__alert" id="tmAlert" role="alert">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="flex:none;margin-top:1px">
-            <circle cx="8" cy="8" r="6.6" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M8 5v3.6M8 10.9v.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          </svg>
-          <span id="tmAlertText"></span>
-        </div>
-
-        <div class="tm__row" data-field="name">
-          <label for="tmName">Your name<span class="tm__req">*</span></label>
-          <input class="tm__input" id="tmName" name="name" type="text"
-                 autocomplete="name" maxlength="120" required>
-          <span class="tm__err" id="tmNameErr"></span>
-        </div>
-
-        <div class="tm__row" data-field="instituteName">
-          <label for="tmInstitute">Institute name<span class="tm__req">*</span></label>
-          <input class="tm__input" id="tmInstitute" name="instituteName" type="text"
-                 autocomplete="organization" maxlength="160" required>
-          <span class="tm__err" id="tmInstituteErr"></span>
-        </div>
-
-        <div class="tm__row" data-field="whatsappNumber">
-          <label for="tmPhone">WhatsApp number<span class="tm__req">*</span></label>
-          <div class="tm__phone">
-            <select class="tm__select" id="tmDial" aria-label="Country calling code">
-              <!-- populated at runtime -->
-            </select>
-            <!-- placeholder is set by syncPhoneUi() to a per-country FORMAT
-                 hint ("10-digit mobile number"). Never a sample number: a
-                 realistic-looking value reads as pre-filled data. -->
-            <input class="tm__input" id="tmPhone" name="whatsappNumber" type="tel"
-                   inputmode="tel" autocomplete="tel-national" maxlength="18" required
-                   placeholder="">
-          </div>
-          <span class="tm__hint" id="tmPhoneHint">We'll send your trial confirmation here.</span>
-          <span class="tm__err" id="tmPhoneErr"></span>
-        </div>
-
-        <div class="tm__row" data-field="email">
-          <label for="tmEmail">Email<span class="tm__req">*</span></label>
-          <input class="tm__input" id="tmEmail" name="email" type="email"
-                 autocomplete="email" maxlength="254" required>
-          <span class="tm__err" id="tmEmailErr"></span>
-        </div>
-
-        <div class="tm__row" data-field="address">
-          <label for="tmAddress">Institute address<span class="tm__opt">Optional</span></label>
-          <textarea class="tm__input" id="tmAddress" name="address" rows="2"
-                    autocomplete="street-address" maxlength="400"></textarea>
-          <span class="tm__err" id="tmAddressErr"></span>
-        </div>
-
-        <!-- Honeypot. Hidden from users and assistive tech; bots fill it. -->
-        <div class="tm__hp" aria-hidden="true">
-          <label for="tmWebsite">Leave this field empty</label>
-          <input id="tmWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-
-        <button class="btn btn--primary tm__submit" type="submit" id="tmSubmit">
-          <span data-tm-label>Start free trial</span>
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" data-tm-arrow>
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+      <div class="tm__form">
+        <a class="btn btn--primary btn--wide tm__submit"
+           href="https://wa.me/919996722631?text=Hi%20BandUltra!%20I%20want%20to%20start%20my%2010-day%20free%20trial.%0A%0AHere%20are%20my%20details:%0AName:%20%0AInstitute%20Name:%20%0AEmail:%20%0AAddress:%20"
+           target="_blank" rel="noopener noreferrer">
+          <span>Contact us on WhatsApp</span>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
 
         <p class="tm__legal">
-          No card required &middot; Cancel anytime &middot; We'll only use these details to set up your trial.
+          Opens WhatsApp in a new tab &middot; No card required &middot; Cancel anytime.
         </p>
-      </form>
-    </div>
-
-    <!-- ------------------------------------------------- success view -->
-    <div class="tm__done" data-tm-view="success" role="status" aria-live="polite">
-      <div class="tm__tick">
-        <svg width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
       </div>
-      <h3>You're on the list.</h3>
-      <p id="tmDoneMsg">
-        We've sent a confirmation to your WhatsApp. Our team will follow up shortly
-        with your access details — usually within one working day.
-      </p>
-      <button type="button" class="btn btn--outline" data-trial-close>Close</button>
     </div>
 
   </div>
 </div>
 
-<!-- ==================================== FREE TRIAL FORM ==================================== -->
+<!-- ==================================== FREE TRIAL MODAL (WHATSAPP) ==================================== -->
 <script>
 (function () {
   'use strict';
 
-  /* ----------------------------------------------------------------- config --
-   * Point this at the deployed API. Overridable without editing the file by
-   * setting window.BANDULTRA_API_BASE before this script runs, or by adding
-   * data-api-base="..." to the <html> element (both now set — see below).
-   *
-   * The bug this used to have: the final fallback was an unconditional
-   * 'http://localhost:4000'. The <html> tag never actually carried
-   * data-api-base on the deployed page, so every real visitor's browser
-   * fell through to that literal fallback and tried to POST to their OWN
-   * machine's localhost:4000 — nothing is ever listening there, so the
-   * fetch failed outright and every submission showed the generic
-   * "We could not reach our servers" network-error message. Fixed in two
-   * layers: the <html> tag now carries the real data-api-base, and this
-   * fallback only ever points at localhost when the page itself is being
-   * served from localhost — anywhere else it falls back to the production
-   * API instead of an address that can never resolve for a real visitor.
-   * ------------------------------------------------------------------------ */
-  var ON_LOCALHOST = /^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname);
-  var API_BASE =
-    window.BANDULTRA_API_BASE ||
-    document.documentElement.getAttribute('data-api-base') ||
-    (ON_LOCALHOST ? 'http://localhost:4000' : 'https://api.bandultra.com');
-  var ENDPOINT = API_BASE.replace(/\/+$/, '') + '/api/v1/trial-requests';
-
-  /* Country codes offered in the dial-code select. `min`/`max` are national
-   * significant number lengths, used only for a friendly client-side hint —
-   * the server re-validates every number with libphonenumber. */
-  var DIALS = [
-    { c: 'IN', d: '+91',  n: 'India',          min: 10, max: 10 },
-    { c: 'AE', d: '+971', n: 'UAE',            min: 8,  max: 9  },
-    { c: 'GB', d: '+44',  n: 'UK',             min: 9,  max: 10 },
-    { c: 'US', d: '+1',   n: 'USA / Canada',   min: 10, max: 10 },
-    { c: 'AU', d: '+61',  n: 'Australia',      min: 9,  max: 9  },
-    { c: 'CA', d: '+1',   n: 'Canada',         min: 10, max: 10 },
-    { c: 'NZ', d: '+64',  n: 'New Zealand',    min: 8,  max: 10 },
-    { c: 'SG', d: '+65',  n: 'Singapore',      min: 8,  max: 8  },
-    { c: 'PK', d: '+92',  n: 'Pakistan',       min: 10, max: 10 },
-    { c: 'BD', d: '+880', n: 'Bangladesh',     min: 9,  max: 10 },
-    { c: 'LK', d: '+94',  n: 'Sri Lanka',      min: 9,  max: 9  },
-    { c: 'NP', d: '+977', n: 'Nepal',          min: 9,  max: 10 },
-    { c: 'PH', d: '+63',  n: 'Philippines',    min: 9,  max: 10 },
-    { c: 'NG', d: '+234', n: 'Nigeria',        min: 7,  max: 10 },
-    { c: 'ZA', d: '+27',  n: 'South Africa',   min: 9,  max: 9  },
-    { c: 'IE', d: '+353', n: 'Ireland',        min: 7,  max: 9  },
-    { c: 'DE', d: '+49',  n: 'Germany',        min: 6,  max: 11 },
-    { c: 'FR', d: '+33',  n: 'France',         min: 9,  max: 9  },
-    { c: 'SA', d: '+966', n: 'Saudi Arabia',   min: 8,  max: 9  },
-    { c: 'QA', d: '+974', n: 'Qatar',          min: 7,  max: 8  },
-    { c: 'KW', d: '+965', n: 'Kuwait',         min: 7,  max: 8  },
-    { c: 'OM', d: '+968', n: 'Oman',           min: 7,  max: 8  },
-    { c: 'MY', d: '+60',  n: 'Malaysia',       min: 7,  max: 10 },
-    { c: 'OTHER', d: '',  n: 'Other (type +code)', min: 6, max: 15 }
-  ];
-
-  var EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
-  var NAME_RE  = /^[\p{L}\p{M}][\p{L}\p{M}\p{N} .'’\-&(),/]*$/u;
-
-  var modal    = document.getElementById('trialModal');
-  var form     = document.getElementById('trialForm');
-  if (!modal || !form) return;
-
-  var dial     = document.getElementById('tmDial');
-  var phone    = document.getElementById('tmPhone');
-  var hint     = document.getElementById('tmPhoneHint');
-  var submit   = document.getElementById('tmSubmit');
-  var label    = submit.querySelector('[data-tm-label]');
-  var arrow    = submit.querySelector('[data-tm-arrow]');
-  var alertBox = document.getElementById('tmAlert');
-  var alertTxt = document.getElementById('tmAlertText');
-  var formView = modal.querySelector('[data-tm-view="form"]');
-  var doneView = modal.querySelector('[data-tm-view="success"]');
-  var doneMsg  = document.getElementById('tmDoneMsg');
+  var modal = document.getElementById('trialModal');
+  if (!modal) return;
 
   var lastFocused = null;
-  var submitting  = false;
-
-  /* ------------------------------------------------------- dial code list -- */
-  DIALS.forEach(function (item) {
-    var opt = document.createElement('option');
-    opt.value = item.c;
-    opt.textContent = (item.d ? item.d + '  ' : '') + item.n;
-    dial.appendChild(opt);
-  });
-  dial.value = 'IN';
-
-  function currentDial() {
-    for (var i = 0; i < DIALS.length; i++) {
-      if (DIALS[i].c === dial.value) return DIALS[i];
-    }
-    return DIALS[0];
-  }
-
-  /**
-   * Describe the EXPECTED FORMAT for the selected country — never a sample
-   * number. A realistic-looking placeholder reads as pre-filled data, and
-   * users have been observed submitting it verbatim.
-   */
-  function syncPhoneUi() {
-    var d = currentDial();
-    if (d.c === 'OTHER') {
-      phone.placeholder = 'Number with country code';
-      hint.textContent  = 'Include the full country code, starting with +.';
-    } else {
-      phone.placeholder = (d.min === d.max ? d.min : d.min + '\u2013' + d.max) +
-                          '-digit mobile number';
-      hint.textContent  = 'We\u2019ll send your trial confirmation to this ' + d.d + ' number.';
-    }
-  }
-  dial.addEventListener('change', function () { syncPhoneUi(); clearError('whatsappNumber'); });
-  syncPhoneUi();
-
-  /* Keep the number field to digits and a single leading '+'. */
-  phone.addEventListener('input', function () {
-    var v = phone.value.replace(/[^\d+\s\-()]/g, '');
-    v = v.replace(/(?!^)\+/g, '');
-    if (phone.value !== v) phone.value = v;
-    clearError('whatsappNumber');
-  });
-
-  /**
-   * Compose the E.164 string the API expects: '+' + country code + national
-   * digits. Handles the user typing their own '+code', a leading national
-   * trunk '0', or the code duplicated in the number field.
-   */
-  function toE164() {
-    var d = currentDial();
-    var raw = phone.value.replace(/[\s\-().]/g, '');
-
-    if (raw.charAt(0) === '+') return raw;              // user supplied it in full
-    if (d.c === 'OTHER') return raw ? '+' + raw.replace(/^\++/, '') : '';
-
-    var digits = raw.replace(/\D/g, '');
-    var code = d.d.slice(1);
-    if (digits.indexOf(code) === 0 && digits.length > code.length) {
-      digits = digits.slice(code.length);               // code typed twice
-    }
-    digits = digits.replace(/^0+/, '');                 // national trunk prefix
-    return digits ? d.d + digits : '';
-  }
-
-  /* ------------------------------------------------------------- errors --- */
-  function rowFor(field) { return form.querySelector('[data-field="' + field + '"]'); }
-
-  function setError(field, message) {
-    var row = rowFor(field);
-    if (!row) return;
-    row.classList.add('has-error');
-    var el = row.querySelector('.tm__err');
-    if (el) el.textContent = message;
-    var input = row.querySelector('.tm__input, .tm__select');
-    if (input) input.setAttribute('aria-invalid', 'true');
-  }
-
-  function clearError(field) {
-    var row = rowFor(field);
-    if (!row) return;
-    row.classList.remove('has-error');
-    var input = row.querySelector('.tm__input, .tm__select');
-    if (input) input.removeAttribute('aria-invalid');
-  }
-
-  function clearAllErrors() {
-    ['name', 'instituteName', 'whatsappNumber', 'email', 'address'].forEach(clearError);
-    alertBox.classList.remove('is-shown');
-  }
-
-  function showAlert(message) {
-    alertTxt.textContent = message;
-    alertBox.classList.add('is-shown');
-  }
-
-  ['tmName', 'tmInstitute', 'tmEmail', 'tmAddress'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('input', function () { clearError(el.name); });
-  });
-
-  /* --------------------------------------------------- client validation --- */
-  function validate() {
-    var errors = {};
-    var name      = document.getElementById('tmName').value.trim();
-    var institute = document.getElementById('tmInstitute').value.trim();
-    var email     = document.getElementById('tmEmail').value.trim();
-    var address   = document.getElementById('tmAddress').value.trim();
-    var e164      = toE164();
-    var d         = currentDial();
-
-    if (!name)                    errors.name = 'Please enter your name.';
-    else if (name.length < 2)     errors.name = 'Name must be at least 2 characters.';
-    else if (!NAME_RE.test(name)) errors.name = 'Please use letters, spaces and basic punctuation only.';
-
-    if (!institute)                    errors.instituteName = 'Please enter your institute name.';
-    else if (institute.length < 2)     errors.instituteName = 'Institute name must be at least 2 characters.';
-    else if (!NAME_RE.test(institute)) errors.instituteName = 'Please use letters, spaces and basic punctuation only.';
-
-    if (!phone.value.trim()) {
-      errors.whatsappNumber = 'Please enter your WhatsApp number.';
-    } else if (!e164 || e164.charAt(0) !== '+') {
-      errors.whatsappNumber = 'Include your country code, starting with + (for example +91).';
-    } else if (!/^\+[1-9]\d{7,14}$/.test(e164)) {
-      errors.whatsappNumber = 'That number does not look complete. Check the digits and try again.';
-    } else if (d.c !== 'OTHER' && e164.indexOf(d.d) === 0) {
-      var national = e164.slice(d.d.length).length;
-      if (national < d.min || national > d.max) {
-        errors.whatsappNumber =
-          'A ' + d.n + ' number should have ' +
-          (d.min === d.max ? d.min : d.min + '–' + d.max) + ' digits after ' + d.d + '.';
-      }
-    }
-
-    if (!email)                     errors.email = 'Please enter your email address.';
-    else if (email.length > 254 ||
-             !EMAIL_RE.test(email)) errors.email = 'Please enter a valid email address.';
-
-    if (address && address.length < 4) {
-      errors.address = 'That address looks too short — leave it blank to skip it.';
-    }
-
-    return { errors: errors, e164: e164 };
-  }
-
-  /* ------------------------------------------------------- loading state --- */
-  function setLoading(on) {
-    submitting = on;
-    submit.disabled = on;
-    submit.setAttribute('aria-busy', on ? 'true' : 'false');
-    label.textContent = on ? 'Sending…' : 'Start free trial';
-    if (on) {
-      arrow.style.display = 'none';
-      if (!submit.querySelector('.tm__spin')) {
-        var s = document.createElement('span');
-        s.className = 'tm__spin';
-        submit.appendChild(s);
-      }
-    } else {
-      arrow.style.display = '';
-      var spin = submit.querySelector('.tm__spin');
-      if (spin) spin.remove();
-    }
-  }
-
-  /* --------------------------------------------------------------- submit -- */
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (submitting) return;
-
-    clearAllErrors();
-    var result = validate();
-    var fields = Object.keys(result.errors);
-
-    if (fields.length) {
-      fields.forEach(function (field) { setError(field, result.errors[field]); });
-      var first = rowFor(fields[0]);
-      var input = first && first.querySelector('.tm__input, .tm__select');
-      if (input) input.focus();
-      return;
-    }
-
-    setLoading(true);
-
-    var payload = {
-      name:           document.getElementById('tmName').value.trim(),
-      instituteName:  document.getElementById('tmInstitute').value.trim(),
-      address:        document.getElementById('tmAddress').value.trim(),
-      whatsappNumber: result.e164,
-      email:          document.getElementById('tmEmail').value.trim(),
-      website:        document.getElementById('tmWebsite').value,  // honeypot
-      source:         'landing-page'
-    };
-
-    // Abort rather than spin forever if the API is unreachable.
-    var controller = window.AbortController ? new AbortController() : null;
-    var timer = setTimeout(function () { if (controller) controller.abort(); }, 20000);
-
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload),
-      signal: controller ? controller.signal : undefined
-    })
-      .then(function (response) {
-        return response.json()
-          .catch(function () { return {}; })
-          .then(function (body) { return { status: response.status, ok: response.ok, body: body }; });
-      })
-      .then(function (res) {
-        clearTimeout(timer);
-
-        if (res.ok) {
-          if (res.body && res.body.message) doneMsg.textContent = res.body.message;
-          formView.style.display = 'none';
-          doneView.classList.add('is-shown');
-          modal.querySelector('.tm').scrollTop = 0;
-          var closeBtn = doneView.querySelector('[data-trial-close]');
-          if (closeBtn) closeBtn.focus();
-
-          // Optional analytics hook — no-op if no tag manager is present.
-          if (typeof window.dataLayer !== 'undefined' && window.dataLayer.push) {
-            window.dataLayer.push({ event: 'trial_request_submitted' });
-          }
-          return;
-        }
-
-        setLoading(false);
-
-        // Field-level errors from the server take precedence over the banner.
-        if (res.status === 422 && res.body && res.body.errors) {
-          var serverFields = Object.keys(res.body.errors);
-          var mapped = 0;
-          serverFields.forEach(function (field) {
-            if (rowFor(field)) { setError(field, res.body.errors[field]); mapped++; }
-          });
-          if (mapped) {
-            var firstRow = rowFor(serverFields.find(rowFor));
-            var el = firstRow && firstRow.querySelector('.tm__input, .tm__select');
-            if (el) el.focus();
-            return;
-          }
-        }
-
-        if (res.status === 429) {
-          showAlert('Too many attempts from this network. Please wait a few minutes, or email sales@bandultra.com.');
-        } else if (res.status >= 500 || res.status === 503) {
-          showAlert('We could not reach our servers just now. Please try again, or email sales@bandultra.com.');
-        } else {
-          showAlert(
-            (res.body && res.body.message) ||
-            'Something went wrong. Please try again, or email sales@bandultra.com.'
-          );
-        }
-      })
-      .catch(function (error) {
-        clearTimeout(timer);
-        setLoading(false);
-        showAlert(
-          error && error.name === 'AbortError'
-            ? 'That took longer than expected. Please check your connection and try again.'
-            : 'We could not reach our servers. Check your connection, or email sales@bandultra.com.'
-        );
-      });
-  });
 
   /* ------------------------------------------------- open / close / focus -- */
   var FOCUSABLE = 'button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
@@ -2144,8 +1641,8 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
     // Next frame, so the opacity/transform transition actually runs.
     requestAnimationFrame(function () {
       modal.classList.add('is-visible');
-      var first = document.getElementById('tmName');
-      if (first && formView.style.display !== 'none') first.focus();
+      var cta = modal.querySelector('.tm__submit');
+      if (cta) cta.focus();
     });
   }
 
@@ -2155,16 +1652,6 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
     var finish = function () {
       modal.classList.remove('is-open');
       modal.hidden = true;
-      // Reset back to the form so a second open is not stuck on success.
-      if (doneView.classList.contains('is-shown')) {
-        doneView.classList.remove('is-shown');
-        formView.style.display = '';
-        form.reset();
-        dial.value = 'IN';
-        syncPhoneUi();
-        clearAllErrors();
-        setLoading(false);
-      }
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     };
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
