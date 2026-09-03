@@ -1,0 +1,1821 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>BandUltra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<!--
+  ============================================================================
+  BandUltra — institute landing page
+  ----------------------------------------------------------------------------
+  PLACEHOLDER CONTENT — replace before this page goes live:
+    · All testimonials are written examples, not real customers. Swap in real,
+      permissioned quotes with real names, institutes and photos.
+    · All metrics (10,000+ mocks, 500+ institutes, etc.) are illustrative.
+      Replace with verified numbers.
+    · The "only platform" and "pixel-accurate" claims are comparative /
+      absolute advertising claims. Have them reviewed before publishing.
+    · HYBRID_DATE is set in one place (the .js-shift-date spans) so the
+      rollout wording can be corrected for your market in seconds.
+  ============================================================================
+-->
+
+<style>
+/* ---------------------------------------------------------------- tokens */
+:root{
+  /* fixed brand surfaces — identical in both themes */
+  --navy-950:#060F1E;
+  --navy-900:#0A1628;
+  --navy-850:#0E1C31;
+  --navy-800:#12233C;
+  --navy-700:#1A3050;
+  --navy-600:#23406B;
+  --navy-line:rgba(146,171,204,.16);
+  --navy-line-2:rgba(146,171,204,.30);
+  --on-navy:#EAF1FA;
+  --on-navy-2:#9DB2CE;
+  --on-navy-3:#6E85A5;
+
+  /* accents */
+  --emerald:#00C48C;
+  --emerald-bright:#12E0A3;
+  --emerald-deep:#009C6F;
+  --blue:#2D6BFF;
+  --blue-soft:#5C8DFF;
+  --amber:#FFB020;
+  --marker:#FFE066;
+
+  /* flipping surfaces */
+  --paper:#FFFFFF;
+  --paper-2:#F4F7FB;
+  --paper-3:#E9EFF7;
+  --card:#FFFFFF;
+  --rule:#DBE4EF;
+  --rule-2:#C6D3E3;
+  --text:#0C1A2E;
+  --text-2:#46586F;
+  --text-3:#78899F;
+  --shadow-sm:0 1px 2px rgba(9,25,48,.06),0 2px 8px rgba(9,25,48,.05);
+  --shadow-md:0 2px 4px rgba(9,25,48,.05),0 14px 34px -12px rgba(9,25,48,.18);
+  --shadow-lg:0 30px 70px -24px rgba(6,15,30,.55);
+
+  /* type */
+  --display:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --wrap:1180px;
+  --r-sm:8px; --r-md:14px; --r-lg:20px;
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1C31;
+    --paper-2:#12233C;
+    --paper-3:#1B3151;
+    --card:#15294A;
+    --rule:rgba(146,171,204,.16);
+    --rule-2:rgba(146,171,204,.28);
+    --text:#E7EFF9;
+    --text-2:#A6B9D3;
+    --text-3:#7C90AD;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+    --shadow-md:0 2px 4px rgba(0,0,0,.3),0 14px 34px -12px rgba(0,0,0,.6);
+    --shadow-lg:0 30px 70px -24px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1C31;
+  --paper-2:#12233C;
+  --paper-3:#1B3151;
+  --card:#15294A;
+  --rule:rgba(146,171,204,.16);
+  --rule-2:rgba(146,171,204,.28);
+  --text:#E7EFF9;
+  --text-2:#A6B9D3;
+  --text-3:#7C90AD;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow-md:0 2px 4px rgba(0,0,0,.3),0 14px 34px -12px rgba(0,0,0,.6);
+  --shadow-lg:0 30px 70px -24px rgba(0,0,0,.8);
+}
+
+/* ---------------------------------------------------------------- base */
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.028em;text-wrap:balance;margin:0;line-height:1.08}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:4px}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:22px}
+.sec{padding-block:clamp(72px,9vw,124px)}
+
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.17em;text-transform:uppercase;
+}
+
+/* ---------------------------------------------------------------- buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-weight:600;font-size:15px;line-height:1;
+  padding:15px 24px;border-radius:10px;border:1px solid transparent;
+  cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+  white-space:nowrap;
+}
+.btn--primary{
+  background:var(--emerald);color:#03231A;
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 10px 26px -10px rgba(0,196,140,.75);
+}
+.btn--primary:hover{background:var(--emerald-bright);transform:translateY(-1.5px)}
+.btn--ghost{
+  background:rgba(255,255,255,.045);color:var(--on-navy);
+  border-color:var(--navy-line-2);backdrop-filter:blur(6px);
+}
+.btn--ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(146,171,204,.5);transform:translateY(-1.5px)}
+.btn--outline{background:transparent;color:var(--text);border-color:var(--rule-2)}
+.btn--outline:hover{border-color:var(--text-3);transform:translateY(-1.5px)}
+.btn--sm{padding:11px 17px;font-size:14px}
+.btn--wide{width:100%}
+
+/* ---------------------------------------------------------------- nav */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(10,22,40,.78);backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid var(--navy-line);
+}
+.nav__in{display:flex;align-items:center;gap:30px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.035em;color:var(--on-navy)}
+.brand__mark{
+  width:28px;height:28px;border-radius:7px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(150deg,var(--emerald) 0%,var(--blue) 130%);
+  font-family:var(--mono);font-size:13px;font-weight:600;color:#03231A;
+}
+.nav__links{display:flex;gap:26px;margin-left:12px}
+.nav__links a{font-size:14.5px;color:var(--on-navy-2);transition:color .16s}
+.nav__links a:hover{color:var(--on-navy)}
+.nav__cta{margin-left:auto;display:flex;gap:10px;align-items:center}
+@media (max-width:900px){.nav__links{display:none}.nav__ghost{display:none}}
+
+/* ---------------------------------------------------------------- hero */
+.hero{position:relative;background:var(--navy-900);color:var(--on-navy);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--navy-line) 1px,transparent 1px),linear-gradient(90deg,var(--navy-line) 1px,transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 0%,transparent 72%);
+  mask-image:radial-gradient(120% 78% at 50% 0%,#000 0%,transparent 72%);
+  opacity:.55;
+}
+.hero::after{
+  content:"";position:absolute;left:50%;top:-360px;width:1100px;height:700px;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(45,107,255,.30) 0%,rgba(45,107,255,0) 70%);
+  pointer-events:none;
+}
+.hero__in{position:relative;z-index:2;padding-block:clamp(56px,7vw,92px) clamp(72px,8vw,110px)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(36px,4.4vw,64px);align-items:center}
+@media (max-width:1000px){.hero__grid{grid-template-columns:1fr;gap:46px}}
+
+.flag{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 8px 7px 7px;border-radius:100px;
+  background:rgba(255,176,32,.10);border:1px solid rgba(255,176,32,.34);
+  color:#FFD48A;margin-bottom:26px;
+}
+.flag__tag{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  background:var(--amber);color:#2A1A00;padding:4px 8px;border-radius:100px;
+}
+.flag__txt{font-size:13.5px;font-weight:500;padding-right:8px}
+
+h1.hero__h{font-size:clamp(38px,5.1vw,62px);letter-spacing:-.038em;line-height:1.045}
+.hero__h .em{
+  color:var(--emerald);
+  background:linear-gradient(180deg,transparent 62%,rgba(0,196,140,.20) 62%);
+  padding-inline:2px;
+}
+.hero__sub{margin-top:24px;font-size:17.5px;line-height:1.66;color:var(--on-navy-2);max-width:56ch}
+.hero__sub strong{color:var(--on-navy);font-weight:600}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero__note{margin-top:16px;font-size:13px;color:var(--on-navy-3);display:flex;flex-wrap:wrap;gap:6px 16px}
+.hero__note span{display:inline-flex;align-items:center;gap:6px}
+.tick{width:13px;height:13px;flex:none;color:var(--emerald)}
+
+/* ------------------------------------------------- CD-IELTS replica */
+.sim{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;
+  background:#F7F9FC;border:1px solid rgba(146,171,204,.30);
+  box-shadow:var(--shadow-lg);
+  color:#0C1A2E;
+}
+.sim__chrome{
+  display:flex;align-items:center;gap:12px;padding:9px 13px;
+  background:var(--navy-800);border-bottom:1px solid var(--navy-line-2);
+}
+.sim__id{font-family:var(--mono);font-size:10.5px;color:var(--on-navy-2);letter-spacing:.04em}
+.sim__lock{
+  margin-left:auto;display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:#8CF0CE;background:rgba(0,196,140,.13);border:1px solid rgba(0,196,140,.3);
+  padding:4px 8px;border-radius:5px;
+}
+.sim__bar{
+  display:flex;align-items:center;gap:14px;padding:10px 14px;
+  background:#fff;border-bottom:1px solid #DDE5F0;
+}
+.sim__timer{
+  font-family:var(--mono);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums;
+  color:#B4291F;letter-spacing:.02em;
+}
+.sim__timerlbl{font-size:11px;color:#68788D;margin-left:-8px}
+.sim__tools{margin-left:auto;display:flex;gap:6px}
+.tool{
+  width:26px;height:24px;border-radius:5px;border:1px solid #DDE5F0;background:#F7F9FC;
+  display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:#46586F;
+}
+.tool--on{background:var(--marker);border-color:#E8C93C;color:#4A3800}
+.sim__body{display:grid;grid-template-columns:1fr 1fr;min-height:298px}
+.sim__pane{padding:16px 16px 18px}
+.sim__pane+.sim__pane{border-left:1px solid #DDE5F0;background:#FDFEFF}
+.sim__ptitle{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:-.01em;color:#0C1A2E;margin-bottom:9px}
+.sim__p{font-size:12.4px;line-height:1.72;color:#31435A;margin-bottom:9px}
+.hl{background:var(--marker);border-radius:2px;padding:1px 1px;box-shadow:0 0 0 1px rgba(232,201,60,.55)}
+.hl--anim{background:linear-gradient(90deg,var(--marker) 50%,transparent 50%);background-size:210% 100%;background-position:100% 0;box-shadow:none}
+.sim.is-live .hl--anim{animation:sweep 1s ease .7s forwards}
+@keyframes sweep{to{background-position:0 0}}
+.note{
+  position:relative;margin-top:12px;background:#FFF6C7;border:1px solid #EBD97A;
+  border-radius:4px;padding:8px 10px;font-size:11.5px;line-height:1.5;color:#4A3800;
+  box-shadow:2px 3px 0 rgba(74,56,0,.09);transform:rotate(-.5deg);
+}
+.note b{font-weight:600}
+.q{border-bottom:1px solid #EDF1F7;padding-bottom:10px;margin-bottom:10px}
+.q:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.q__n{font-family:var(--mono);font-size:11px;font-weight:600;color:#2D6BFF}
+.q__t{font-size:12.3px;line-height:1.55;color:#31435A;margin-top:2px}
+.q__opts{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.opt{display:flex;align-items:center;gap:7px;font-size:11.8px;color:#46586F}
+.opt i{width:12px;height:12px;border-radius:50%;border:1.5px solid #B9C6D8;flex:none;display:block}
+.opt--sel{color:#0C1A2E;font-weight:500}
+.opt--sel i{border-color:var(--blue);background:radial-gradient(circle,var(--blue) 0 42%,#fff 46%)}
+.sim__foot{
+  display:flex;align-items:center;gap:5px;padding:9px 13px;
+  background:#EFF3F9;border-top:1px solid #DDE5F0;
+}
+.pip{
+  width:20px;height:20px;border-radius:4px;display:grid;place-items:center;
+  font-family:var(--mono);font-size:10px;background:#fff;border:1px solid #CFDAE8;color:#68788D;
+}
+.pip--done{background:var(--navy-700);border-color:var(--navy-700);color:#fff}
+.pip--now{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 0 0 3px rgba(45,107,255,.18)}
+.sim__foot .pipnote{margin-left:auto;font-family:var(--mono);font-size:10px;color:#68788D}
+@media (max-width:560px){
+  .sim__body{grid-template-columns:1fr}
+  .sim__pane+.sim__pane{border-left:0;border-top:1px solid #DDE5F0}
+  .sim__foot .pip:nth-child(n+9){display:none}
+}
+/* the paper writing sheet peeking behind the sim */
+.sim-stack{position:relative}
+.sheet{
+  position:absolute;right:-22px;bottom:-46px;width:176px;z-index:3;
+  background:#fff;border:1px solid #D8E1EE;border-radius:8px;padding:12px 12px 10px;
+  box-shadow:0 22px 46px -18px rgba(6,15,30,.6);transform:rotate(2.4deg);
+  color:#0C1A2E;
+}
+.sheet__lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8A99AD}
+.sheet__ttl{font-family:var(--display);font-weight:700;font-size:11.5px;margin:3px 0 8px}
+.sheet__line{height:5px;border-radius:2px;background:#EDF1F7;margin-bottom:6px}
+.sheet__line:nth-child(odd){width:92%}
+.sheet__line:nth-child(even){width:78%}
+.sheet__band{
+  margin-top:9px;display:flex;align-items:baseline;gap:6px;border-top:1px dashed #D8E1EE;padding-top:8px;
+}
+.sheet__band b{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--emerald-deep);line-height:1}
+.sheet__band span{font-size:9.5px;color:#8A99AD;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:1000px){.sheet{right:-8px;bottom:-38px;width:154px}}
+@media (max-width:560px){.sheet{display:none}}
+
+/* ---------------------------------------------------------------- logos */
+.logos{border-top:1px solid var(--navy-line);background:var(--navy-950)}
+.logos__in{display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding-block:22px}
+.logos__lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--on-navy-3)}
+.logos__row{display:flex;gap:26px;flex-wrap:wrap;align-items:center}
+.logos__row span{
+  font-family:var(--display);font-weight:600;font-size:14.5px;letter-spacing:-.01em;
+  color:var(--on-navy-3);opacity:.85;
+}
+
+/* ---------------------------------------------------------------- urgency */
+.urgent{background:var(--navy-850);color:var(--on-navy);position:relative;overflow:hidden}
+.urgent::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--amber);
+}
+.urgent__grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(30px,4vw,60px);align-items:start}
+@media (max-width:900px){.urgent__grid{grid-template-columns:1fr;gap:34px}}
+.urgent .eyebrow{color:var(--amber)}
+.urgent h2{font-size:clamp(28px,3.4vw,40px);margin-top:14px}
+.urgent__lead{margin-top:18px;font-size:16.5px;line-height:1.68;color:var(--on-navy-2)}
+.urgent__lead strong{color:#FFD48A;font-weight:600}
+.risks{display:grid;gap:12px}
+.risk{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+  background:rgba(255,255,255,.035);border:1px solid var(--navy-line);
+  border-radius:var(--r-md);padding:17px 19px;
+}
+.risk__i{
+  width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;
+  background:rgba(255,176,32,.13);border:1px solid rgba(255,176,32,.3);color:var(--amber);
+}
+.risk h4{font-size:15px;letter-spacing:-.015em}
+.risk p{margin-top:5px;font-size:14px;line-height:1.6;color:var(--on-navy-2)}
+.risk--fix{background:rgba(0,196,140,.07);border-color:rgba(0,196,140,.28)}
+.risk--fix .risk__i{background:rgba(0,196,140,.14);border-color:rgba(0,196,140,.32);color:var(--emerald)}
+.risk--fix h4{color:var(--emerald-bright)}
+
+/* ---------------------------------------------------------------- sec heads */
+.sechead{max-width:60ch}
+.sechead .eyebrow{color:var(--emerald-deep)}
+.sechead h2{font-size:clamp(29px,3.6vw,44px);margin-top:14px}
+.sechead p{margin-top:16px;font-size:17px;color:var(--text-2);line-height:1.65;max-width:56ch}
+:root[data-theme="dark"] .sechead .eyebrow{color:var(--emerald)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sechead .eyebrow{color:var(--emerald)}}
+
+/* ---------------------------------------------------------------- bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:46px}
+.cell{
+  display:flex;flex-direction:column;
+  position:relative;background:var(--card);border:1px solid var(--rule);
+  border-radius:var(--r-lg);padding:26px 26px 28px;overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.cell:hover{border-color:var(--rule-2);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.cell--wide{grid-column:span 4}
+.cell--half{grid-column:span 3}
+.cell--third{grid-column:span 2}
+.cell--tall{grid-column:span 2;display:flex;flex-direction:column}
+.cell--dark{background:var(--navy-900);border-color:var(--navy-line-2);color:var(--on-navy)}
+.cell--dark .cell__d{color:var(--on-navy-2)}
+.cell--dark .cell__tag{color:var(--emerald)}
+.cell__tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--emerald-deep)}
+.cell h3{font-size:20px;margin-top:12px;letter-spacing:-.024em}
+.cell__d{margin-top:10px;font-size:14.8px;line-height:1.62;color:var(--text-2);max-width:46ch}
+.cell__list{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px;align-content:start}
+.cell__list li{display:grid;grid-template-columns:auto 1fr;gap:9px;font-size:13.8px;color:var(--text-2);line-height:1.5}
+.cell--dark .cell__list li{color:var(--on-navy-2)}
+.cell__list svg{margin-top:4px}
+@media (max-width:940px){
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .cell--wide,.cell--half,.cell--third{grid-column:span 2}
+.cell--tall{grid-column:span 2;display:flex;flex-direction:column}
+}
+@media (max-width:620px){.bento{grid-template-columns:1fr}.cell--wide,.cell--half,.cell--third{grid-column:span 1}}
+
+/* hybrid split diagram inside bento */
+.split{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:auto;padding-top:24px;align-items:stretch}
+.split__side{padding:16px 16px 17px;border:1px solid var(--navy-line-2);border-radius:12px;background:rgba(255,255,255,.035)}
+.split__side--paper{background:rgba(255,224,102,.07);border-color:rgba(255,224,102,.26)}
+.split__seam{
+  width:34px;display:grid;place-items:center;position:relative;
+}
+.split__seam::before{
+  content:"";position:absolute;top:8px;bottom:8px;width:0;border-left:2px dashed var(--navy-line-2);
+}
+.split__seam b{
+  position:relative;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
+  background:var(--navy-900);color:var(--on-navy-3);padding:5px 0;writing-mode:vertical-rl;
+}
+.split__k{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--on-navy-3)}
+.split__side--paper .split__k{color:#E8C93C}
+.split__m{margin-top:8px;display:grid;gap:5px}
+.split__m span{font-size:13.2px;color:var(--on-navy);display:flex;align-items:center;gap:7px}
+.split__note{margin-top:11px;font-size:12px;color:var(--on-navy-3);line-height:1.5}
+@media (max-width:520px){
+  .split{grid-template-columns:1fr}
+  .split__seam{width:auto;height:30px}
+  .split__seam::before{top:50%;left:8px;right:8px;bottom:auto;width:auto;border-left:0;border-top:2px dashed var(--navy-line-2)}
+  .split__seam b{writing-mode:horizontal-tb;padding:0 8px}
+}
+
+/* band ladder in grading cell */
+.ladder{display:flex;gap:4px;align-items:flex-end;margin-top:auto;padding-top:22px;height:78px;box-sizing:content-box}
+.ladder i{
+  flex:1;border-radius:3px 3px 0 0;background:var(--paper-3);display:block;
+}
+.ladder i.on{background:linear-gradient(180deg,var(--emerald) 0%,var(--emerald-deep) 100%)}
+.ladder__lbls{display:flex;justify-content:space-between;margin-top:7px;font-family:var(--mono);font-size:10px;color:var(--text-3)}
+
+/* mini band report */
+.report{
+  margin-top:auto;padding-top:20px;
+}
+.report__card,.report{display:block}
+.report__top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.report__logo{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;color:var(--text-3);
+  border:1px dashed var(--rule-2);border-radius:4px;padding:4px 7px;
+}
+.report__meta{font-family:var(--mono);font-size:9.5px;color:var(--text-3);letter-spacing:.04em}
+.report__overall{display:flex;align-items:baseline;gap:8px;padding:14px 0 12px}
+.report__overall b{
+  font-family:var(--mono);font-weight:600;font-size:38px;line-height:1;letter-spacing:-.04em;
+  color:var(--emerald-deep);font-variant-numeric:tabular-nums;
+}
+.report__overall span{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-3)}
+.report__rows{display:grid;gap:0;border-top:1px solid var(--rule)}
+.report__rows span{
+  display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px solid var(--rule);
+}
+.report__rows span:last-child{border-bottom:0}
+.report__rows i{font-style:normal;font-size:13px;color:var(--text-2);flex:1}
+.report__rows b{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--text);font-variant-numeric:tabular-nums}
+.report__rows em{
+  font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:#8A7000;background:rgba(255,224,102,.30);border-radius:3px;padding:2px 5px;
+}
+:root[data-theme="dark"] .report__rows em{color:#FFE066;background:rgba(255,224,102,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .report__rows em{color:#FFE066;background:rgba(255,224,102,.14)}}
+
+/* proctor chips */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:20px}
+.chip{
+  font-family:var(--mono);font-size:11px;letter-spacing:.02em;
+  padding:6px 10px;border-radius:6px;
+  background:rgba(180,41,31,.10);border:1px solid rgba(214,73,62,.34);color:#FF9E93;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.chip::before{content:"";width:5px;height:5px;border-radius:50%;background:#FF6A5A;flex:none}
+
+/* ---------------------------------------------------------------- metrics */
+.metrics{background:var(--navy-900);color:var(--on-navy);border-block:1px solid var(--navy-line)}
+.metrics__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--navy-line);border:1px solid var(--navy-line);border-radius:var(--r-md);overflow:hidden}
+.metric{background:var(--navy-900);padding:28px 24px}
+.metric b{
+  display:block;font-family:var(--mono);font-weight:600;font-size:clamp(28px,3.4vw,40px);
+  letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums;line-height:1;
+}
+.metric b em{font-style:normal;color:var(--emerald)}
+.metric span{display:block;margin-top:9px;font-size:13.5px;color:var(--on-navy-2);line-height:1.45}
+@media (max-width:820px){.metrics__grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:440px){.metrics__grid{grid-template-columns:1fr}}
+
+/* ---------------------------------------------------------------- quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+@media (max-width:940px){.quotes{grid-template-columns:1fr}}
+.quote{
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:26px 26px 24px;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);
+}
+.quote__band{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--emerald-deep);display:flex;align-items:center;gap:8px;
+}
+.quote__band::after{content:"";height:1px;flex:1;background:var(--rule)}
+.quote p{margin-top:16px;font-size:15.6px;line-height:1.66;color:var(--text);flex:1}
+.quote footer{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--rule)}
+.av{
+  width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em;
+  background:var(--paper-3);color:var(--text-2);
+}
+.quote__who b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em}
+.quote__who span{display:block;font-size:12.5px;color:var(--text-3);margin-top:1px}
+
+/* ---------------------------------------------------------------- pricing */
+.pricing{background:var(--paper-2)}
+.pricing-single{max-width:680px;margin:44px auto 0}
+.plan-single{
+  background:var(--navy-900);border:1px solid var(--navy-600);color:var(--on-navy);
+  border-radius:var(--r-lg);padding:42px 40px;box-shadow:var(--shadow-lg);text-align:center;position:relative;
+}
+.plan-single__n{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.02em}
+.plan-single__for{margin-top:8px;font-size:15.5px;color:var(--on-navy-2);line-height:1.5}
+.plan-single__p{margin-top:24px;font-family:var(--mono);font-weight:600;font-size:36px;color:var(--emerald-bright);letter-spacing:-.03em}
+.plan-single__f{list-style:none;margin:30px 0;padding:0;display:grid;gap:12px;text-align:left}
+.plan-single__f li{display:grid;grid-template-columns:auto 1fr;gap:12px;font-size:15px;line-height:1.5;color:var(--on-navy-2)}
+.plan-single__f svg{margin-top:4px;color:var(--emerald)}
+.plan-single__f b{font-weight:600;color:var(--on-navy)}
+:root[data-theme="dark"] .plan-single{background:var(--navy-950);border-color:rgba(0,196,140,.36)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .plan-single{background:var(--navy-950);border-color:rgba(0,196,140,.36)}}
+
+/* ---------------------------------------------------------------- faq */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,4vw,56px);align-items:start}
+@media (max-width:900px){.faq{grid-template-columns:1fr;gap:30px}}
+.faq__list{display:grid;gap:0;border-top:1px solid var(--rule)}
+details.qa{border-bottom:1px solid var(--rule)}
+details.qa summary{
+  list-style:none;cursor:pointer;padding:19px 40px 19px 0;position:relative;
+  font-family:var(--display);font-weight:600;font-size:16.2px;letter-spacing:-.018em;color:var(--text);
+}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{
+  content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;margin-top:-6px;
+  border-right:2px solid var(--text-3);border-bottom:2px solid var(--text-3);
+  transform:rotate(45deg);transition:transform .22s ease;transform-origin:60% 60%;
+}
+details.qa[open] summary::after{transform:rotate(-135deg)}
+details.qa summary:hover{color:var(--emerald-deep)}
+.qa__a{padding:0 30px 22px 0;font-size:15px;line-height:1.68;color:var(--text-2)}
+
+/* ---------------------------------------------------------------- final cta */
+.final{background:var(--navy-900);color:var(--on-navy);position:relative;overflow:hidden}
+.final::after{
+  content:"";position:absolute;left:50%;bottom:-420px;width:1000px;height:700px;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,196,140,.24) 0%,rgba(0,196,140,0) 70%);
+}
+.final__in{position:relative;z-index:2}
+
+.final__grid{
+  position:relative;z-index:2;display:grid;grid-template-columns:1fr;
+  gap:38px;max-width:700px;margin-inline:auto;text-align:center;
+}
+.final__pitch h2{font-size:clamp(30px,3.8vw,46px);margin-top:16px}
+.final__pitch p{margin-top:18px;font-size:16.8px;color:var(--on-navy-2);margin-inline:auto;max-width:52ch}
+.final__pitch .hero__cta{justify-content:center}
+
+/* ---------------------------------------------------------------- footer */
+.foot{background:var(--navy-950);color:var(--on-navy-2);border-top:1px solid var(--navy-line)}
+.foot__grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:34px;padding-block:56px 40px}
+@media (max-width:860px){.foot__grid{grid-template-columns:1fr 1fr;gap:30px}}
+@media (max-width:520px){.foot__grid{grid-template-columns:1fr}}
+.foot__about{font-size:14px;line-height:1.62;color:var(--on-navy-3);max-width:34ch;margin-top:14px}
+.foot h5{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--on-navy-3);margin:0 0 14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.foot li a{font-size:14px;color:var(--on-navy-2);transition:color .16s}
+.foot li a:hover{color:var(--emerald)}
+.foot__bar{
+  border-top:1px solid var(--navy-line);padding-block:22px 30px;
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+  font-size:12.8px;color:var(--on-navy-3);
+}
+.foot__legal{display:flex;flex-wrap:wrap;gap:18px}
+.watermark{
+  padding-bottom:34px;text-align:center;
+}
+.watermark b{
+  display:block;font-family:var(--display);font-weight:800;
+  font-size:clamp(34px,9vw,104px);letter-spacing:-.05em;line-height:.9;
+  color:transparent;-webkit-text-stroke:1.4px rgba(157,178,206,.28);
+  text-transform:uppercase;user-select:none;
+}
+.watermark b em{font-style:normal;-webkit-text-stroke:1.4px rgba(0,196,140,.55)}
+
+/* ---------------------------------------------------------------- reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .68s cubic-bezier(.16,.84,.44,1),transform .68s cubic-bezier(.16,.84,.44,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .sim.is-live .hl--anim{animation:none;background:var(--marker)}
+  *{scroll-behavior:auto !important}
+}
+
+/* -------------------------------------------------------- trial modal */
+.tm-backdrop{
+  position:fixed;inset:0;z-index:200;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:clamp(16px,5vh,64px) 16px;overflow-y:auto;
+  background:rgba(6,15,30,.72);backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .22s ease;
+}
+.tm-backdrop.is-open{display:flex}
+.tm-backdrop.is-visible{opacity:1}
+
+.tm{
+  position:relative;width:100%;max-width:520px;
+  background:var(--paper);color:var(--text);
+  border:1px solid var(--rule);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-lg);
+  transform:translateY(14px) scale(.985);
+  transition:transform .26s cubic-bezier(.2,.8,.3,1);
+}
+.tm-backdrop.is-visible .tm{transform:none}
+@media (prefers-reduced-motion:reduce){
+  .tm-backdrop,.tm{transition:none}
+  .tm{transform:none}
+}
+
+.tm__head{padding:26px 28px 0;position:relative}
+.tm__eyebrow{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--emerald-deep);
+}
+.tm__title{font-size:24px;letter-spacing:-.03em;margin:9px 0 7px}
+.tm__sub{font-size:14.5px;line-height:1.5;color:var(--text-2);margin:0}
+
+.tm__x{
+  position:absolute;top:18px;right:18px;
+  width:34px;height:34px;display:grid;place-items:center;
+  background:transparent;border:1px solid var(--rule);border-radius:9px;
+  color:var(--text-3);cursor:pointer;transition:all .16s ease;
+}
+.tm__x:hover{color:var(--text);border-color:var(--rule-2);background:var(--paper-2)}
+
+.tm__form{padding:22px 28px 28px}
+.tm__row{margin-bottom:15px}
+.tm__row label{
+  display:block;font-size:12.5px;font-weight:600;
+  color:var(--text-2);margin-bottom:6px;letter-spacing:-.005em;
+}
+.tm__req{color:var(--emerald-deep);margin-left:2px}
+.tm__opt{
+  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-3);margin-left:6px;
+}
+
+.tm__input,.tm__select{
+  width:100%;font-family:var(--body);font-size:15px;color:var(--text);
+  background:var(--paper-2);border:1px solid var(--rule-2);border-radius:10px;
+  padding:12px 13px;transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
+  -webkit-appearance:none;appearance:none;
+}
+.tm__input::placeholder{color:var(--text-3)}
+.tm__input:focus,.tm__select:focus{
+  outline:none;background:var(--paper);border-color:var(--emerald);
+  box-shadow:0 0 0 3px rgba(0,196,140,.18);
+}
+textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
+
+/* phone: country-code select + national number, one visual control */
+.tm__phone{display:grid;grid-template-columns:132px 1fr;gap:8px}
+.tm__select{
+  font-family:var(--mono);font-size:13.5px;padding-right:26px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2378899F' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 11px center;
+}
+.tm__hint{display:block;font-size:11.5px;color:var(--text-3);margin-top:6px}
+
+/* validation */
+.tm__row.has-error .tm__input,
+.tm__row.has-error .tm__select{
+  border-color:#E5484D;background:rgba(229,72,77,.05);
+}
+.tm__row.has-error .tm__input:focus,
+.tm__row.has-error .tm__select:focus{box-shadow:0 0 0 3px rgba(229,72,77,.16)}
+.tm__err{
+  display:none;font-size:12px;color:#E5484D;margin-top:6px;line-height:1.4;
+}
+.tm__row.has-error .tm__err{display:block}
+
+/* honeypot — off-screen, never announced, never focusable */
+.tm__hp{
+  position:absolute!important;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
+
+.tm__submit{width:100%;margin-top:6px;position:relative}
+.tm__submit[disabled]{opacity:.62;cursor:not-allowed;transform:none}
+.tm__spin{
+  width:15px;height:15px;border-radius:50%;
+  border:2px solid rgba(3,35,26,.28);border-top-color:#03231A;
+  animation:tmspin .7s linear infinite;
+}
+@keyframes tmspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.tm__spin{animation-duration:1.8s}}
+
+.tm__legal{
+  font-size:11.5px;line-height:1.5;color:var(--text-3);
+  margin:14px 0 0;text-align:center;
+}
+
+/* form-level error banner */
+.tm__alert{
+  display:none;gap:9px;align-items:flex-start;
+  padding:11px 13px;border-radius:10px;margin-bottom:16px;
+  font-size:13px;line-height:1.45;
+  background:rgba(229,72,77,.09);border:1px solid rgba(229,72,77,.32);color:#C93B40;
+}
+.tm__alert.is-shown{display:flex}
+:root:not([data-theme="light"]) .tm__alert{color:#FF9CA0}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .tm__alert{color:#C93B40}}
+
+/* success state */
+.tm__done{padding:34px 28px 30px;text-align:center;display:none}
+.tm__done.is-shown{display:block}
+.tm__tick{
+  width:52px;height:52px;margin:0 auto 16px;border-radius:50%;
+  display:grid;place-items:center;color:#03231A;background:var(--emerald);
+  box-shadow:0 10px 26px -10px rgba(0,196,140,.8);
+}
+.tm__done h3{font-size:21px;letter-spacing:-.028em;margin-bottom:9px}
+.tm__done p{font-size:14.5px;line-height:1.55;color:var(--text-2);margin:0 auto;max-width:38ch}
+.tm__done .btn{margin-top:22px}
+
+@media (max-width:520px){
+  .tm__head{padding:22px 20px 0}
+  .tm__form,.tm__done{padding-left:20px;padding-right:20px}
+  .tm__title{font-size:21px}
+  .tm__phone{grid-template-columns:112px 1fr}
+}
+
+</style>
+
+<!-- ============================================================ NAV -->
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top"><span class="brand__mark" style="background:#060F1E;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-1px;">BU</span>BandUltra</a>
+    <nav class="nav__links">
+      <a href="#shift">The Shift</a>
+      <a href="#platform">Platform</a>
+      <a href="#proof">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm" href="#trial" data-trial-open>Start Free Trial</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero__in">
+    <div class="hero__grid">
+      <div>
+        <div class="flag rv">
+          <span class="flag__tag">Format change</span>
+          <span class="flag__txt">Hybrid delivery lands at test centres from <b class="js-shift-date">September</b></span>
+        </div>
+
+        <h1 class="hero__h rv">Master the New Hybrid IELTS Format: <span class="em">Computer-Delivered</span> Reading &amp; Listening + <span class="em">Paper-Based</span> Writing.</h1>
+
+        <p class="hero__sub rv">The IELTS format is changing. BandUltra is built end-to-end to simulate the exact hybrid testing environment — digital Reading and Listening on screen, handwritten Writing marked by your faculty, one band score at the end. <strong>Don't let your students walk into a test they've never seen.</strong></p>
+
+        <div class="hero__cta rv">
+          <a class="btn btn--primary" href="#trial" data-trial-open>Start Free Trial
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="hero__note rv">
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>14-day trial, full platform</span>
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>No card required</span>
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in 48 hours</span>
+        </div>
+      </div>
+
+      <!-- CD-IELTS interface replica -->
+      <div class="sim-stack rv">
+        <div class="sim" id="sim" role="img" aria-label="Screenshot of the BandUltra computer-delivered IELTS reading interface: a split screen with the passage on the left and questions on the right, a countdown timer, highlighting and note tools, and a full-screen lock indicator.">
+          <div class="sim__chrome">
+            <span class="sim__id">bandultra · Academic Reading · Passage 2 of 3</span>
+            <span class="sim__lock">
+              <svg width="9" height="11" viewBox="0 0 10 12" fill="none" aria-hidden="true"><rect x="1" y="5" width="8" height="6.2" rx="1.4" fill="currentColor"/><path d="M2.8 5V3.4a2.2 2.2 0 014.4 0V5" stroke="currentColor" stroke-width="1.3"/></svg>
+              Locked
+            </span>
+          </div>
+
+          <div class="sim__bar">
+            <span class="sim__timer" id="timer">37:41</span>
+            <span class="sim__timerlbl">remaining</span>
+            <div class="sim__tools">
+              <span class="tool" title="Decrease text size">A-</span>
+              <span class="tool" title="Increase text size">A+</span>
+              <span class="tool tool--on" title="Highlighter">
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 10.6l6-6 2.4 2.4-6 6H3v-2.4z" fill="currentColor"/><path d="M2.4 12.6h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </span>
+              <span class="tool" title="Notes">
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="2.2" y="2.2" width="9.6" height="9.6" rx="1.4" stroke="currentColor" stroke-width="1.3"/><path d="M4.4 5.4h5.2M4.4 7.6h3.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="sim__body">
+            <div class="sim__pane">
+              <div class="sim__ptitle">The Economics of Urban Beekeeping</div>
+              <p class="sim__p">For most of the twentieth century, commercial apiaries were pushed steadily outward from city limits. <span class="hl hl--anim">Municipal by-laws framed hives as a nuisance rather than an asset</span>, and the assumption went largely unchallenged until yield data from rooftop colonies began to contradict it.</p>
+              <p class="sim__p">Rooftop colonies in three European capitals produced, on average, 18% more honey per hive than their rural counterparts — a result researchers attribute to the sheer variety of flowering species in parks and private gardens.</p>
+              <div class="note"><b>Note —</b> "18% more" → check Q14, careful: <i>average</i>, not maximum.</div>
+            </div>
+
+            <div class="sim__pane">
+              <div class="sim__ptitle">Questions 14–16</div>
+              <div class="q">
+                <div class="q__n">14</div>
+                <div class="q__t">Rooftop hives outperformed rural hives mainly because of</div>
+                <div class="q__opts">
+                  <span class="opt"><i></i>warmer city temperatures.</span>
+                  <span class="opt opt--sel"><i></i>a wider range of flowering plants.</span>
+                  <span class="opt"><i></i>fewer commercial pesticides.</span>
+                </div>
+              </div>
+              <div class="q">
+                <div class="q__n">15</div>
+                <div class="q__t">Early municipal by-laws treated hives as a <span style="border-bottom:1.5px solid #2D6BFF;padding:0 22px 1px">&nbsp;</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sim__foot">
+            <span class="pip pip--done">1</span>
+            <span class="pip pip--done">2</span>
+            <span class="pip pip--done">3</span>
+            <span class="pip pip--done">4</span>
+            <span class="pip pip--done">5</span>
+            <span class="pip pip--done">6</span>
+            <span class="pip pip--done">7</span>
+            <span class="pip pip--done">8</span>
+            <span class="pip pip--done">9</span>
+            <span class="pip pip--done">10</span>
+            <span class="pip pip--done">11</span>
+            <span class="pip pip--done">12</span>
+            <span class="pip pip--done">13</span>
+            <span class="pip pip--now">14</span>
+            <span class="pip">15</span>
+            <span class="pip">16</span>
+            <span class="pipnote">Review flagged</span>
+          </div>
+        </div>
+
+        <!-- paper writing sheet, the other half of the hybrid -->
+        <div class="sheet" aria-hidden="true">
+          <div class="sheet__lbl">Writing · Task 2</div>
+          <div class="sheet__ttl">Handwritten sheet</div>
+          <span class="sheet__line"></span><span class="sheet__line"></span>
+          <span class="sheet__line"></span><span class="sheet__line"></span>
+          <span class="sheet__line"></span>
+          <div class="sheet__band"><b>7.0</b><span>Examiner band</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================ URGENCY -->
+<section class="urgent sec" id="shift">
+  <div class="wrap urgent__grid">
+    <div class="rv">
+      <div class="eyebrow">The transition problem</div>
+      <h2>Your students are about to sit a test they have never practised.</h2>
+      <p class="urgent__lead">Reading and Listening move to screen. Writing stays on paper. That is <strong>two different exam surfaces in a single sitting</strong> — and no mock built for one or the other prepares a candidate for both. Institutes that can't run a true hybrid mock will watch enrolments walk to the ones that can.</p>
+      <div class="hero__cta" style="margin-top:28px">
+        <a class="btn btn--primary" href="#trial" data-trial-open>Get hybrid-ready this week</a>
+      </div>
+    </div>
+
+    <div class="risks rv">
+      <div class="risk">
+        <span class="risk__i" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2.6l5.6 10.2H2.4L8 2.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6.6v3M8 11.4v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <h4>Students freeze on the interface, not the English</h4>
+          <p>Split-screen navigation, on-screen highlighting and a question palette are learned skills. A candidate meeting them for the first time on test day loses marks they had already earned.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <span class="risk__i" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3.4 2.6h9.2v10.8H3.4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.8 5.8h4.4M5.8 8h4.4M5.8 10.2h2.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <h4>Your faculty is still marking Reading by hand</h4>
+          <p>Three hours of answer-sheet checking per batch is three hours not spent on Speaking practice — the module that actually moves band scores.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <span class="risk__i" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.6" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.8V8l2.2 1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <h4>Counsellors have no score to show a parent</h4>
+          <p>Without a clean, branded band report after every mock, the enrolment conversation is a promise instead of a number.</p>
+        </div>
+      </div>
+      <div class="risk risk--fix">
+        <span class="risk__i" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.4l3.3 3.2L13 4.9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <h4>BandUltra closes all three in one sitting</h4>
+          <p>Digital Reading and Listening auto-graded the moment the timer stops, handwritten Writing routed straight to the evaluator queue, and a branded band report in your counsellor's hand before the batch leaves the building.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PLATFORM / BENTO -->
+<section class="sec" id="platform">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="eyebrow">The platform</div>
+      <h2>One engine for both halves of the hybrid exam.</h2>
+      <p>Everything an institute needs to run, invigilate, mark and report a full four-module mock — without a single spreadsheet.</p>
+    </div>
+
+    <div class="bento">
+      <!-- 1. hybrid engine — the anchor cell -->
+      <article class="cell cell--dark cell--wide rv">
+        <div class="cell__tag">Hybrid test engine</div>
+        <h3>Digital on screen. Writing on paper. One band score.</h3>
+        <p class="cell__d">Schedule a single mock that runs Listening and Reading in the browser, then hands the Writing task to your invigilator as a printed sheet — and stitches all four modules back into one candidate record.</p>
+
+        <div class="split">
+          <div class="split__side">
+            <div class="split__k">On screen</div>
+            <div class="split__m">
+              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Listening · 30 min + transfer</span>
+              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Reading · 60 min</span>
+            </div>
+            <p class="split__note">Auto-graded to band the second the timer hits zero.</p>
+          </div>
+          <div class="split__seam" aria-hidden="true"><b>ONE SITTING</b></div>
+          <div class="split__side split__side--paper">
+            <div class="split__k">On paper</div>
+            <div class="split__m">
+              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:#E8C93C"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Writing Task 1 + 2 · 60 min</span>
+              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:#E8C93C"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Speaking · face-to-face</span>
+            </div>
+            <p class="split__note">Scanned or scored in-app against the four official criteria.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. reports — companion to the anchor cell -->
+      <article class="cell cell--tall rv">
+        <div class="cell__tag">Reports</div>
+        <h3>Your logo. One click.</h3>
+        <p class="cell__d">Every mock ends in a branded PDF band report. The document a parent takes home carries your institute's mark, not ours.</p>
+
+        <div class="report" aria-hidden="true">
+          <div class="report__top">
+            <span class="report__logo">YOUR LOGO</span>
+            <span class="report__meta">Mock 04 · Academic</span>
+          </div>
+          <div class="report__overall">
+            <b>7.5</b>
+            <span>Overall band</span>
+          </div>
+          <div class="report__rows">
+            <span><i>Listening</i><b>8.0</b></span>
+            <span><i>Reading</i><b>7.5</b></span>
+            <span><i>Writing</i><b>6.5</b><em>paper</em></span>
+            <span><i>Speaking</i><b>7.5</b></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. interface -->
+      <article class="cell cell--half rv">
+        <div class="cell__tag">Test interface</div>
+        <h3>The CD-IELTS screen, rebuilt detail for detail.</h3>
+        <p class="cell__d">Candidates practise on the same split-screen they'll sit the real thing on — so nothing on test day is new.</p>
+        <ul class="cell__list">
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Split-screen passage and question pane</li>
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Three text sizes, toggled mid-test</li>
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Drag-to-highlight and inline sticky notes</li>
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Question palette with review flags</li>
+        </ul>
+      </article>
+
+      <!-- 3. proctoring -->
+      <article class="cell cell--dark cell--half rv">
+        <div class="cell__tag">Proctoring</div>
+        <h3>Full-screen lockdown, enforced.</h3>
+        <p class="cell__d">The browser is sealed for the duration of the paper. Every attempt to leave it is logged against the candidate and surfaced on the invigilator's live dashboard.</p>
+        <div class="chips">
+          <span class="chip">tab switch blocked</span>
+          <span class="chip">copy / paste blocked</span>
+          <span class="chip">exit fullscreen flagged</span>
+          <span class="chip">right-click disabled</span>
+          <span class="chip">second screen detected</span>
+        </div>
+      </article>
+
+      <!-- 4. grading -->
+      <article class="cell cell--half rv">
+        <div class="cell__tag">Grading</div>
+        <h3>Bands in seconds, not evenings.</h3>
+        <p class="cell__d">Reading and Listening convert to the 0–9 scale automatically. Writing and Speaking land in a clean evaluator queue with the four criteria side by side.</p>
+        <div class="ladder" aria-hidden="true">
+          <i style="height:26%"></i><i style="height:34%"></i><i style="height:46%"></i>
+          <i style="height:58%" class="on"></i><i style="height:72%" class="on"></i>
+          <i style="height:88%" class="on"></i><i style="height:100%" class="on"></i>
+          <i style="height:64%"></i><i style="height:40%"></i>
+        </div>
+        <div class="ladder__lbls" aria-hidden="true"><span>4.0</span><span>6.5</span><span>9.0</span></div>
+      </article>
+
+
+      <!-- 6. exam alignment -->
+      <article class="cell cell--half rv">
+        <div class="cell__tag">Content accuracy</div>
+        <h3>Real exam-aligned mocks, calibrated to official difficulty.</h3>
+        <p class="cell__d">Our question banks mirror current test patterns, lexical resource thresholds, and cognitive load so your students never face surprises.</p>
+        <ul class="cell__list">
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Strictly aligned with official task types</li>
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Authentic audio tracks with native pacing</li>
+          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Regularly updated for format shifts</li>
+        </ul>
+      </article>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ METRICS -->
+<section class="metrics sec" id="proof" style="padding-block:clamp(56px,6vw,80px)">
+  <div class="wrap">
+    <!-- PLACEHOLDER METRICS — replace every figure below with verified numbers -->
+    <div class="metrics__grid rv" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="metric"><b class="count" data-target="5000">0<em>+</em></b><span>Hybrid mock tests conducted</span></div>
+      <div class="metric"><b class="count" data-target="100">0<em>+</em></b><span>Institutes running on BandUltra</span></div>
+      <div class="metric"><b>6<em>hrs</em></b><span>Median faculty marking time saved per batch</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================ PRICING -->
+<section class="pricing sec" id="pricing">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="eyebrow">Pricing &amp; Plans</div>
+      <h2>Get in touch for institute access.</h2>
+      <p>Contact us to discuss your requirements and deploy the full hybrid engine for your centre.</p>
+    </div>
+
+    <div class="pricing-single rv">
+      <article class="plan-single">
+        <div class="plan-single__n">Institute Plan</div>
+        <div class="plan-single__for">Complete hybrid test engine infrastructure for IELTS coaching institutes.</div>
+        <div class="plan-single__p">Contact sales@bandultra.com</div>
+        <ul class="plan-single__f">
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full <b>hybrid test engine</b> &amp; CD-IELTS interface</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full-screen proctoring and automated band conversion</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evaluator workflow queues and branded PDF reports</span></li>
+        </ul>
+        <a class="btn btn--primary btn--wide" href="mailto:sales@bandultra.com">Contact sales@bandultra.com</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap faq">
+    <div class="sechead rv">
+      <div class="eyebrow">Before you ask</div>
+      <h2>The five questions every director asks.</h2>
+      <p>If yours isn't here, contact us directly and we'll answer it live.</p>
+    </div>
+
+    <div class="faq__list rv">
+      <details class="qa" open>
+        <summary>How fast is onboarding?</summary>
+        <div class="qa__a">Most institutes run their first live mock within 48 hours. Set up your test parameters and pick a test date — we handle the rest. Enterprise accounts get a dedicated onboarding manager who sets up branches and roles with you on a call.</div>
+      </details>
+      <details class="qa">
+        <summary>Is student data secure?</summary>
+        <div class="qa__a">Data is encrypted in transit and at rest, hosted in-region, and access is scoped by role so a branch coordinator only ever sees their own centre. You can export or permanently delete a student record at any time, and archived students stop counting toward your plan while their history stays intact.</div>
+      </details>
+      <details class="qa">
+        <summary>Can I use my own institute logo?</summary>
+        <div class="qa__a">Yes — on the student login screen, the test interface header and every PDF band report. Custom domain options are also available so students never see a BandUltra URL.</div>
+      </details>
+      <details class="qa">
+        <summary>What if my centre loses internet mid-test?</summary>
+        <div class="qa__a">Answers are written locally as the candidate works and sync the moment the connection returns. The timer pauses on disconnect and the invigilator can resume the session from the exact question the student was on.</div>
+      </details>
+      <details class="qa">
+        <summary>Do we have to switch our whole institute at once?</summary>
+        <div class="qa__a">No. Most institutes start with one batch on the trial, run a parallel mock against their existing process, and move the rest once faculty are comfortable. Nothing about your current paper workflow has to change on day one.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CONVERT -->
+<section class="final sec" id="trial">
+  <div class="wrap final__in">
+    <div class="final__grid rv">
+      <div class="final__pitch">
+        <div class="eyebrow" style="color:var(--emerald)">Hybrid rollout &middot; <span class="js-shift-date">September</span></div>
+        <h2>The institutes that are ready will take the enrolments.</h2>
+        <p>Start a free trial today and run your first true hybrid mock this week — digital Reading and Listening, handwritten Writing, one band report in your counsellor's hand.</p>
+        <div class="hero__cta" style="margin-top:28px">
+          <a class="btn btn--primary" href="#trial-form" data-trial-open>Start Free Trial
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <p class="hero__note" style="justify-content:center;margin-top:18px">
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>14-day trial</span>
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>No card required</span>
+          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Cancel anytime</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="brand" href="#top"><span class="brand__mark" style="background:#060F1E;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-1px;">BU</span>BandUltra</a>
+        <p class="foot__about">Hybrid mock testing infrastructure for IELTS coaching institutes. Built for the format the exam is moving to.</p>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="#platform">Hybrid test engine</a></li>
+          <li><a href="#platform">CD-IELTS interface</a></li>
+          <li><a href="#platform">Proctoring</a></li>
+          <li><a href="#platform">Institute dashboard</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#shift">The format shift</a></li>
+          <li><a href="#proof">Customer results</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:sales@bandultra.com">sales@bandultra.com</a></li>
+          <li><a href="https://bandultra.com">bandultra.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__bar">
+      <span>© <span id="yr">2026</span> BandUltra. All rights reserved.</span>
+      <span class="foot__legal">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#security">Security</a>
+        <a href="#dpa">Data Processing</a>
+      </span>
+    </div>
+
+    <div class="watermark" aria-hidden="true">
+      <b>Powered by <em>BandUltra</em></b>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* current year */
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* scroll reveal */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var sibs = Array.prototype.slice.call(e.target.parentNode.children).filter(function(n){
+          return n.classList && n.classList.contains('rv');
+        });
+        var i = Math.min(sibs.indexOf(e.target), 5);
+        e.target.style.transitionDelay = (i > 0 ? i * 70 : 0) + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* exam timer + highlight sweep, only while the sim is on screen */
+  var sim = document.getElementById('sim');
+  var timer = document.getElementById('timer');
+  if (sim && timer) {
+    var left = 37 * 60 + 41, tick = null;
+    function paint(){
+      var m = Math.floor(left / 60), s = left % 60;
+      timer.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    }
+    function start(){
+      sim.classList.add('is-live');
+      if (tick || reduce) return;
+      tick = setInterval(function(){ if (left > 0) { left--; paint(); } }, 1000);
+    }
+    function stop(){ if (tick) { clearInterval(tick); tick = null; } }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0.25 }).observe(sim);
+    } else { start(); }
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) stop();
+    });
+  }
+
+  /* smooth in-page nav */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href');
+    if (id === '#' || id.length < 2) return;
+    var t = document.querySelector(id);
+    if (!t) return;
+    e.preventDefault();
+    t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  });
+
+  /* number counter animation */
+  var counters = document.querySelectorAll('.count');
+  var speed = 200;
+  
+  function runCounters(){
+    counters.forEach(function(counter){
+      var target = +counter.getAttribute('data-target');
+      var emTag = counter.querySelector('em');
+      var count = 0;
+      var inc = target / speed;
+      
+      var updateCount = function(){
+        count += inc;
+        if(count < target){
+          counter.firstChild.textContent = Math.ceil(count).toLocaleString();
+          setTimeout(updateCount, 15);
+        } else {
+          counter.firstChild.textContent = target.toLocaleString();
+        }
+      };
+      updateCount();
+    });
+  }
+
+  var metricsSec = document.getElementById('proof');
+  if (metricsSec && 'IntersectionObserver' in window && !reduce) {
+    var counterObs = new IntersectionObserver(function(entries, observer){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          runCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counterObs.observe(metricsSec);
+  } else {
+    runCounters();
+  }
+
+})();
+</script>
+
+<!-- ============================================ FREE TRIAL MODAL -->
+<div class="tm-backdrop" id="trialModal" role="dialog" aria-modal="true"
+     aria-labelledby="tmTitle" aria-describedby="tmSub" hidden>
+  <div class="tm" role="document">
+
+    <button type="button" class="tm__x" data-trial-close aria-label="Close dialog">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- ---------------------------------------------------- form view -->
+    <div class="tm__view" data-tm-view="form">
+      <div class="tm__head">
+        <div class="tm__eyebrow">14-day free trial</div>
+        <h3 class="tm__title" id="tmTitle">Start your free trial</h3>
+        <p class="tm__sub" id="tmSub">
+          Tell us where to set things up. We'll confirm on WhatsApp straight away
+          and have your institute running a hybrid mock this week.
+        </p>
+      </div>
+
+      <form class="tm__form" id="trialForm" novalidate>
+        <div class="tm__alert" id="tmAlert" role="alert">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="flex:none;margin-top:1px">
+            <circle cx="8" cy="8" r="6.6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 5v3.6M8 10.9v.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span id="tmAlertText"></span>
+        </div>
+
+        <div class="tm__row" data-field="name">
+          <label for="tmName">Your name<span class="tm__req">*</span></label>
+          <input class="tm__input" id="tmName" name="name" type="text"
+                 autocomplete="name" maxlength="120" required
+                 placeholder="Priya Sharma">
+          <span class="tm__err" id="tmNameErr"></span>
+        </div>
+
+        <div class="tm__row" data-field="instituteName">
+          <label for="tmInstitute">Institute name<span class="tm__req">*</span></label>
+          <input class="tm__input" id="tmInstitute" name="instituteName" type="text"
+                 autocomplete="organization" maxlength="160" required
+                 placeholder="Bright Future IELTS Academy">
+          <span class="tm__err" id="tmInstituteErr"></span>
+        </div>
+
+        <div class="tm__row" data-field="whatsappNumber">
+          <label for="tmPhone">WhatsApp number<span class="tm__req">*</span></label>
+          <div class="tm__phone">
+            <select class="tm__select" id="tmDial" aria-label="Country calling code">
+              <!-- populated at runtime -->
+            </select>
+            <input class="tm__input" id="tmPhone" name="whatsappNumber" type="tel"
+                   inputmode="tel" autocomplete="tel-national" maxlength="18" required
+                   placeholder="98765 43210">
+          </div>
+          <span class="tm__hint" id="tmPhoneHint">We'll send your trial confirmation here.</span>
+          <span class="tm__err" id="tmPhoneErr"></span>
+        </div>
+
+        <div class="tm__row" data-field="email">
+          <label for="tmEmail">Email<span class="tm__req">*</span></label>
+          <input class="tm__input" id="tmEmail" name="email" type="email"
+                 autocomplete="email" maxlength="254" required
+                 placeholder="priya@brightfuture.edu">
+          <span class="tm__err" id="tmEmailErr"></span>
+        </div>
+
+        <div class="tm__row" data-field="address">
+          <label for="tmAddress">Institute address<span class="tm__opt">Optional</span></label>
+          <textarea class="tm__input" id="tmAddress" name="address" rows="2"
+                    autocomplete="street-address" maxlength="400"
+                    placeholder="Sector 17, Chandigarh"></textarea>
+          <span class="tm__err" id="tmAddressErr"></span>
+        </div>
+
+        <!-- Honeypot. Hidden from users and assistive tech; bots fill it. -->
+        <div class="tm__hp" aria-hidden="true">
+          <label for="tmWebsite">Leave this field empty</label>
+          <input id="tmWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="btn btn--primary tm__submit" type="submit" id="tmSubmit">
+          <span data-tm-label>Start free trial</span>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" data-tm-arrow>
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <p class="tm__legal">
+          No card required &middot; Cancel anytime &middot; We'll only use these details to set up your trial.
+        </p>
+      </form>
+    </div>
+
+    <!-- ------------------------------------------------- success view -->
+    <div class="tm__done" data-tm-view="success" role="status" aria-live="polite">
+      <div class="tm__tick">
+        <svg width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>You're on the list.</h3>
+      <p id="tmDoneMsg">
+        We've sent a confirmation to your WhatsApp. Our team will follow up shortly
+        with your access details — usually within one working day.
+      </p>
+      <button type="button" class="btn btn--outline" data-trial-close>Close</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================================== FREE TRIAL FORM ==================================== -->
+<script>
+(function () {
+  'use strict';
+
+  /* ----------------------------------------------------------------- config --
+   * Point this at the deployed API. Overridable without editing the file by
+   * setting window.BANDULTRA_API_BASE before this script runs, or by adding
+   * data-api-base="https://api.bandultra.com" to the <html> element.
+   * ------------------------------------------------------------------------ */
+  var API_BASE =
+    window.BANDULTRA_API_BASE ||
+    document.documentElement.getAttribute('data-api-base') ||
+    'http://localhost:4000';
+  var ENDPOINT = API_BASE.replace(/\/+$/, '') + '/api/v1/trial-requests';
+
+  /* Country codes offered in the dial-code select. `min`/`max` are national
+   * significant number lengths, used only for a friendly client-side hint —
+   * the server re-validates every number with libphonenumber. */
+  var DIALS = [
+    { c: 'IN', d: '+91',  n: 'India',          min: 10, max: 10 },
+    { c: 'AE', d: '+971', n: 'UAE',            min: 8,  max: 9  },
+    { c: 'GB', d: '+44',  n: 'UK',             min: 9,  max: 10 },
+    { c: 'US', d: '+1',   n: 'USA / Canada',   min: 10, max: 10 },
+    { c: 'AU', d: '+61',  n: 'Australia',      min: 9,  max: 9  },
+    { c: 'CA', d: '+1',   n: 'Canada',         min: 10, max: 10 },
+    { c: 'NZ', d: '+64',  n: 'New Zealand',    min: 8,  max: 10 },
+    { c: 'SG', d: '+65',  n: 'Singapore',      min: 8,  max: 8  },
+    { c: 'PK', d: '+92',  n: 'Pakistan',       min: 10, max: 10 },
+    { c: 'BD', d: '+880', n: 'Bangladesh',     min: 9,  max: 10 },
+    { c: 'LK', d: '+94',  n: 'Sri Lanka',      min: 9,  max: 9  },
+    { c: 'NP', d: '+977', n: 'Nepal',          min: 9,  max: 10 },
+    { c: 'PH', d: '+63',  n: 'Philippines',    min: 9,  max: 10 },
+    { c: 'NG', d: '+234', n: 'Nigeria',        min: 7,  max: 10 },
+    { c: 'ZA', d: '+27',  n: 'South Africa',   min: 9,  max: 9  },
+    { c: 'IE', d: '+353', n: 'Ireland',        min: 7,  max: 9  },
+    { c: 'DE', d: '+49',  n: 'Germany',        min: 6,  max: 11 },
+    { c: 'FR', d: '+33',  n: 'France',         min: 9,  max: 9  },
+    { c: 'SA', d: '+966', n: 'Saudi Arabia',   min: 8,  max: 9  },
+    { c: 'QA', d: '+974', n: 'Qatar',          min: 7,  max: 8  },
+    { c: 'KW', d: '+965', n: 'Kuwait',         min: 7,  max: 8  },
+    { c: 'OM', d: '+968', n: 'Oman',           min: 7,  max: 8  },
+    { c: 'MY', d: '+60',  n: 'Malaysia',       min: 7,  max: 10 },
+    { c: 'OTHER', d: '',  n: 'Other (type +code)', min: 6, max: 15 }
+  ];
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
+  var NAME_RE  = /^[\p{L}\p{M}][\p{L}\p{M}\p{N} .'’\-&(),/]*$/u;
+
+  var modal    = document.getElementById('trialModal');
+  var form     = document.getElementById('trialForm');
+  if (!modal || !form) return;
+
+  var dial     = document.getElementById('tmDial');
+  var phone    = document.getElementById('tmPhone');
+  var hint     = document.getElementById('tmPhoneHint');
+  var submit   = document.getElementById('tmSubmit');
+  var label    = submit.querySelector('[data-tm-label]');
+  var arrow    = submit.querySelector('[data-tm-arrow]');
+  var alertBox = document.getElementById('tmAlert');
+  var alertTxt = document.getElementById('tmAlertText');
+  var formView = modal.querySelector('[data-tm-view="form"]');
+  var doneView = modal.querySelector('[data-tm-view="success"]');
+  var doneMsg  = document.getElementById('tmDoneMsg');
+
+  var lastFocused = null;
+  var submitting  = false;
+
+  /* ------------------------------------------------------- dial code list -- */
+  DIALS.forEach(function (item) {
+    var opt = document.createElement('option');
+    opt.value = item.c;
+    opt.textContent = (item.d ? item.d + '  ' : '') + item.n;
+    dial.appendChild(opt);
+  });
+  dial.value = 'IN';
+
+  function currentDial() {
+    for (var i = 0; i < DIALS.length; i++) {
+      if (DIALS[i].c === dial.value) return DIALS[i];
+    }
+    return DIALS[0];
+  }
+
+  function syncPhoneUi() {
+    var d = currentDial();
+    if (d.c === 'OTHER') {
+      phone.placeholder = '+49 30 1234567';
+      hint.textContent  = 'Include the full country code, starting with +.';
+    } else {
+      phone.placeholder = d.c === 'IN' ? '98765 43210' : 'Number without ' + d.d;
+      hint.textContent  = 'We’ll send your trial confirmation to ' + d.d + ' …';
+    }
+  }
+  dial.addEventListener('change', function () { syncPhoneUi(); clearError('whatsappNumber'); });
+  syncPhoneUi();
+
+  /* Keep the number field to digits and a single leading '+'. */
+  phone.addEventListener('input', function () {
+    var v = phone.value.replace(/[^\d+\s\-()]/g, '');
+    v = v.replace(/(?!^)\+/g, '');
+    if (phone.value !== v) phone.value = v;
+    clearError('whatsappNumber');
+  });
+
+  /**
+   * Compose the E.164 string the API expects: '+' + country code + national
+   * digits. Handles the user typing their own '+code', a leading national
+   * trunk '0', or the code duplicated in the number field.
+   */
+  function toE164() {
+    var d = currentDial();
+    var raw = phone.value.replace(/[\s\-().]/g, '');
+
+    if (raw.charAt(0) === '+') return raw;              // user supplied it in full
+    if (d.c === 'OTHER') return raw ? '+' + raw.replace(/^\++/, '') : '';
+
+    var digits = raw.replace(/\D/g, '');
+    var code = d.d.slice(1);
+    if (digits.indexOf(code) === 0 && digits.length > code.length) {
+      digits = digits.slice(code.length);               // code typed twice
+    }
+    digits = digits.replace(/^0+/, '');                 // national trunk prefix
+    return digits ? d.d + digits : '';
+  }
+
+  /* ------------------------------------------------------------- errors --- */
+  function rowFor(field) { return form.querySelector('[data-field="' + field + '"]'); }
+
+  function setError(field, message) {
+    var row = rowFor(field);
+    if (!row) return;
+    row.classList.add('has-error');
+    var el = row.querySelector('.tm__err');
+    if (el) el.textContent = message;
+    var input = row.querySelector('.tm__input, .tm__select');
+    if (input) input.setAttribute('aria-invalid', 'true');
+  }
+
+  function clearError(field) {
+    var row = rowFor(field);
+    if (!row) return;
+    row.classList.remove('has-error');
+    var input = row.querySelector('.tm__input, .tm__select');
+    if (input) input.removeAttribute('aria-invalid');
+  }
+
+  function clearAllErrors() {
+    ['name', 'instituteName', 'whatsappNumber', 'email', 'address'].forEach(clearError);
+    alertBox.classList.remove('is-shown');
+  }
+
+  function showAlert(message) {
+    alertTxt.textContent = message;
+    alertBox.classList.add('is-shown');
+  }
+
+  ['tmName', 'tmInstitute', 'tmEmail', 'tmAddress'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function () { clearError(el.name); });
+  });
+
+  /* --------------------------------------------------- client validation --- */
+  function validate() {
+    var errors = {};
+    var name      = document.getElementById('tmName').value.trim();
+    var institute = document.getElementById('tmInstitute').value.trim();
+    var email     = document.getElementById('tmEmail').value.trim();
+    var address   = document.getElementById('tmAddress').value.trim();
+    var e164      = toE164();
+    var d         = currentDial();
+
+    if (!name)                    errors.name = 'Please enter your name.';
+    else if (name.length < 2)     errors.name = 'Name must be at least 2 characters.';
+    else if (!NAME_RE.test(name)) errors.name = 'Please use letters, spaces and basic punctuation only.';
+
+    if (!institute)                    errors.instituteName = 'Please enter your institute name.';
+    else if (institute.length < 2)     errors.instituteName = 'Institute name must be at least 2 characters.';
+    else if (!NAME_RE.test(institute)) errors.instituteName = 'Please use letters, spaces and basic punctuation only.';
+
+    if (!phone.value.trim()) {
+      errors.whatsappNumber = 'Please enter your WhatsApp number.';
+    } else if (!e164 || e164.charAt(0) !== '+') {
+      errors.whatsappNumber = 'Include your country code, starting with + (for example +91).';
+    } else if (!/^\+[1-9]\d{7,14}$/.test(e164)) {
+      errors.whatsappNumber = 'That number does not look complete. Check the digits and try again.';
+    } else if (d.c !== 'OTHER' && e164.indexOf(d.d) === 0) {
+      var national = e164.slice(d.d.length).length;
+      if (national < d.min || national > d.max) {
+        errors.whatsappNumber =
+          'A ' + d.n + ' number should have ' +
+          (d.min === d.max ? d.min : d.min + '–' + d.max) + ' digits after ' + d.d + '.';
+      }
+    }
+
+    if (!email)                     errors.email = 'Please enter your email address.';
+    else if (email.length > 254 ||
+             !EMAIL_RE.test(email)) errors.email = 'Please enter a valid email address.';
+
+    if (address && address.length < 4) {
+      errors.address = 'That address looks too short — leave it blank to skip it.';
+    }
+
+    return { errors: errors, e164: e164 };
+  }
+
+  /* ------------------------------------------------------- loading state --- */
+  function setLoading(on) {
+    submitting = on;
+    submit.disabled = on;
+    submit.setAttribute('aria-busy', on ? 'true' : 'false');
+    label.textContent = on ? 'Sending…' : 'Start free trial';
+    if (on) {
+      arrow.style.display = 'none';
+      if (!submit.querySelector('.tm__spin')) {
+        var s = document.createElement('span');
+        s.className = 'tm__spin';
+        submit.appendChild(s);
+      }
+    } else {
+      arrow.style.display = '';
+      var spin = submit.querySelector('.tm__spin');
+      if (spin) spin.remove();
+    }
+  }
+
+  /* --------------------------------------------------------------- submit -- */
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (submitting) return;
+
+    clearAllErrors();
+    var result = validate();
+    var fields = Object.keys(result.errors);
+
+    if (fields.length) {
+      fields.forEach(function (field) { setError(field, result.errors[field]); });
+      var first = rowFor(fields[0]);
+      var input = first && first.querySelector('.tm__input, .tm__select');
+      if (input) input.focus();
+      return;
+    }
+
+    setLoading(true);
+
+    var payload = {
+      name:           document.getElementById('tmName').value.trim(),
+      instituteName:  document.getElementById('tmInstitute').value.trim(),
+      address:        document.getElementById('tmAddress').value.trim(),
+      whatsappNumber: result.e164,
+      email:          document.getElementById('tmEmail').value.trim(),
+      website:        document.getElementById('tmWebsite').value,  // honeypot
+      source:         'landing-page'
+    };
+
+    // Abort rather than spin forever if the API is unreachable.
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (controller) controller.abort(); }, 20000);
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    })
+      .then(function (response) {
+        return response.json()
+          .catch(function () { return {}; })
+          .then(function (body) { return { status: response.status, ok: response.ok, body: body }; });
+      })
+      .then(function (res) {
+        clearTimeout(timer);
+
+        if (res.ok) {
+          if (res.body && res.body.message) doneMsg.textContent = res.body.message;
+          formView.style.display = 'none';
+          doneView.classList.add('is-shown');
+          modal.querySelector('.tm').scrollTop = 0;
+          var closeBtn = doneView.querySelector('[data-trial-close]');
+          if (closeBtn) closeBtn.focus();
+
+          // Optional analytics hook — no-op if no tag manager is present.
+          if (typeof window.dataLayer !== 'undefined' && window.dataLayer.push) {
+            window.dataLayer.push({ event: 'trial_request_submitted' });
+          }
+          return;
+        }
+
+        setLoading(false);
+
+        // Field-level errors from the server take precedence over the banner.
+        if (res.status === 422 && res.body && res.body.errors) {
+          var serverFields = Object.keys(res.body.errors);
+          var mapped = 0;
+          serverFields.forEach(function (field) {
+            if (rowFor(field)) { setError(field, res.body.errors[field]); mapped++; }
+          });
+          if (mapped) {
+            var firstRow = rowFor(serverFields.find(rowFor));
+            var el = firstRow && firstRow.querySelector('.tm__input, .tm__select');
+            if (el) el.focus();
+            return;
+          }
+        }
+
+        if (res.status === 429) {
+          showAlert('Too many attempts from this network. Please wait a few minutes, or email sales@bandultra.com.');
+        } else if (res.status >= 500 || res.status === 503) {
+          showAlert('We could not reach our servers just now. Please try again, or email sales@bandultra.com.');
+        } else {
+          showAlert(
+            (res.body && res.body.message) ||
+            'Something went wrong. Please try again, or email sales@bandultra.com.'
+          );
+        }
+      })
+      .catch(function (error) {
+        clearTimeout(timer);
+        setLoading(false);
+        showAlert(
+          error && error.name === 'AbortError'
+            ? 'That took longer than expected. Please check your connection and try again.'
+            : 'We could not reach our servers. Check your connection, or email sales@bandultra.com.'
+        );
+      });
+  });
+
+  /* ------------------------------------------------- open / close / focus -- */
+  var FOCUSABLE = 'button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+  function openModal(trigger) {
+    lastFocused = trigger || document.activeElement;
+    modal.hidden = false;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    // Next frame, so the opacity/transform transition actually runs.
+    requestAnimationFrame(function () {
+      modal.classList.add('is-visible');
+      var first = document.getElementById('tmName');
+      if (first && formView.style.display !== 'none') first.focus();
+    });
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    var finish = function () {
+      modal.classList.remove('is-open');
+      modal.hidden = true;
+      // Reset back to the form so a second open is not stuck on success.
+      if (doneView.classList.contains('is-shown')) {
+        doneView.classList.remove('is-shown');
+        formView.style.display = '';
+        form.reset();
+        dial.value = 'IN';
+        syncPhoneUi();
+        clearAllErrors();
+        setLoading(false);
+      }
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    };
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) finish(); else setTimeout(finish, 220);
+  }
+
+  /* Wire every trial CTA on the page.
+   *
+   * Registered in the CAPTURE phase and stopping propagation, because the
+   * page's own smooth-scroll handler (document-level, bubble phase, registered
+   * earlier in the document) matches any a[href^="#"] and would scroll the page
+   * to the #trial section before the modal opened. Capture runs first, so the
+   * modal wins while href="#trial" stays a working no-JS fallback.
+   */
+  document.addEventListener('click', function (event) {
+    if (!event.target || !event.target.closest) return;
+
+    var opener = event.target.closest('[data-trial-open]');
+    if (opener) {
+      event.preventDefault();
+      event.stopPropagation();
+      openModal(opener);
+      return;
+    }
+
+    var closer = event.target.closest('[data-trial-close]');
+    if (closer) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeModal();
+      return;
+    }
+
+    // Click on the backdrop itself (not the panel) closes.
+    if (event.target === modal) {
+      event.stopPropagation();
+      closeModal();
+    }
+  }, true);
+
+  document.addEventListener('keydown', function (event) {
+    if (modal.hidden) return;
+
+    if (event.key === 'Escape') { event.preventDefault(); closeModal(); return; }
+
+    // Focus trap.
+    if (event.key === 'Tab') {
+      var nodes = Array.prototype.filter.call(
+        modal.querySelectorAll(FOCUSABLE),
+        function (el) { return el.offsetParent !== null; }
+      );
+      if (!nodes.length) return;
+      var first = nodes[0];
+      var last  = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
+      }
+    }
+  });
+
+  // Deep link: /#trial-form opens the modal on load.
+  if (window.location.hash === '#trial-form') openModal(null);
+})();
+</script>
+
+</body></html>

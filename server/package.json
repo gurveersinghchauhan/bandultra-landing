@@ -1,0 +1,31 @@
+{
+  "name": "bandultra-trial-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lead capture + WhatsApp notification service for the BandUltra Start Free Trial flow.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "test:mongo": "REQUIRE_MONGO=1 node --test tests/integration.mongo.test.js",
+    "whatsapp:verify": "node scripts/verify-template.mjs"
+  },
+  "dependencies": {
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "libphonenumber-js": "^1.11.17",
+    "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.1.4"
+  }
+}
