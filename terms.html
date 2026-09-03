@@ -1,23 +1,7 @@
-<!doctype html><html lang="en" data-api-base="https://api.bandultra.com"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="favicon.svg"></head><body><title>BandUltra</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="favicon.svg"><title>Terms of Service — BandUltra</title><meta name="description" content="The terms governing access to and use of the BandUltra hybrid IELTS/PTE testing platform."></head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-<!--
-  ============================================================================
-  BandUltra — institute landing page
-  ----------------------------------------------------------------------------
-  PLACEHOLDER CONTENT — replace before this page goes live:
-    · All testimonials are written examples, not real customers. Swap in real,
-      permissioned quotes with real names, institutes and photos.
-    · All metrics (10,000+ mocks, 500+ institutes, etc.) are illustrative.
-      Replace with verified numbers.
-    · The "only platform" and "pixel-accurate" claims are comparative /
-      absolute advertising claims. Have them reviewed before publishing.
-    · HYBRID_DATE is set in one place (the .js-shift-date spans) so the
-      rollout wording can be corrected for your market in seconds.
-  ============================================================================
--->
 
 <style>
 /* ---------------------------------------------------------------- tokens */
@@ -941,19 +925,58 @@ details.qa summary:hover{color:var(--emerald-deep)}
 
 </style>
 
+<style>
+/* ------------------------------------------------------- legal page ----- */
+.legal-hero{background:var(--navy-900);color:var(--on-navy);padding-block:52px 40px}
+.legal-hero .wrap{max-width:800px}
+.legal-hero .eyebrow{color:var(--emerald-bright)}
+.legal-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.4vw,44px);letter-spacing:-.03em;line-height:1.08;margin-top:14px}
+.legal-hero .legal-meta{margin-top:12px;font-size:14px;color:var(--on-navy-2)}
+
+.legal{padding-block:52px 90px}
+.legal .wrap{max-width:800px}
+.legal__intro{font-size:16px;line-height:1.7;color:var(--text-2);margin:0 0 34px;padding-bottom:30px;border-bottom:1px solid var(--rule)}
+.legal h2{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;color:var(--text);margin:38px 0 14px;scroll-margin-top:88px}
+.legal section:first-of-type h2{margin-top:0}
+.legal h3{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--text);margin:22px 0 8px}
+.legal p{font-size:15.5px;line-height:1.7;color:var(--text-2);margin:0 0 14px}
+.legal p.legal__caps{font-size:13.5px;letter-spacing:.01em;line-height:1.75}
+.legal .placeholder{background:rgba(255,176,32,.16);color:#8A5A00;padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:.92em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .legal .placeholder{background:rgba(255,176,32,.22);color:#FFD48A}}
+:root[data-theme="dark"] .legal .placeholder{background:rgba(255,176,32,.22);color:#FFD48A}
+.legal p:last-child{margin-bottom:0}
+.legal ul{margin:0 0 16px;padding-left:22px;display:grid;gap:9px}
+.legal ul:last-child{margin-bottom:0}
+.legal li{font-size:15.5px;line-height:1.65;color:var(--text-2)}
+.legal li b, .legal strong{color:var(--text);font-weight:600}
+.legal a{color:var(--emerald-deep);text-decoration:underline;text-decoration-color:rgba(0,196,140,.35);text-underline-offset:2px}
+.legal a:hover{color:var(--emerald)}
+.legal__toc{margin:0 0 8px;padding:20px 22px;background:var(--paper-2);border:1px solid var(--rule);border-radius:var(--r-md)}
+.legal__toc h2{margin:0 0 12px;font-size:13px}
+.legal__toc ul{list-style:none;margin:0;padding:0;columns:2;column-gap:24px;display:block}
+.legal__toc li{font-size:14px;line-height:1.9;color:var(--text-2)}
+.legal__toc a{text-decoration:none;color:var(--text-2)}
+.legal__toc a:hover{color:var(--emerald-deep);text-decoration:underline}
+@media (max-width:560px){
+  .legal__toc ul{columns:1}
+  .legal h2{font-size:18.5px}
+  .legal p,.legal li{font-size:15px}
+}
+</style>
+
 <!-- ============================================================ NAV -->
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top"><span class="brand__mark" style="background:#060F1E;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-1px;">BU</span>BandUltra</a>
+    <a class="brand" href="index.html"><span class="brand__mark" style="background:#060F1E;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-1px;">BU</span>BandUltra</a>
     <nav class="nav__links">
-      <a href="#shift">The Shift</a>
-      <a href="#platform">Platform</a>
-      <a href="#proof">Results</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a href="index.html#shift">The Shift</a>
+      <a href="index.html#platform">Platform</a>
+      <a href="index.html#proof">Results</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#faq">FAQ</a>
     </nav>
     <div class="nav__cta">
-      <a class="btn btn--primary btn--sm" href="#trial" data-trial-open>Start Free Trial</a>
+      <a class="btn btn--primary btn--sm" href="index.html#trial-form">Start Free Trial</a>
       <button class="nav__toggle" id="navToggle" type="button"
               aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
         <span class="nav__bars" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -961,430 +984,450 @@ details.qa summary:hover{color:var(--emerald-deep)}
     </div>
   </div>
   <div class="nav__panel" id="navMenu" hidden>
-    <a href="#shift">The Shift</a>
-    <a href="#platform">Platform</a>
-    <a href="#proof">Results</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn btn--primary" href="#trial" data-trial-open>Start Free Trial</a>
+    <a href="index.html#shift">The Shift</a>
+    <a href="index.html#platform">Platform</a>
+    <a href="index.html#proof">Results</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#faq">FAQ</a>
+    <a class="btn btn--primary" href="index.html#trial-form">Start Free Trial</a>
   </div>
 </header>
 
-<!-- ============================================================ HERO -->
-<section class="hero" id="top">
-  <div class="wrap hero__in">
-    <div class="hero__grid">
-      <div>
-        <div class="flag rv">
-          <span class="flag__tag">Format change</span>
-          <span class="flag__txt">Hybrid delivery lands at test centres from <b class="js-shift-date">September</b></span>
-        </div>
-
-        <h1 class="hero__h rv">Master the New Hybrid IELTS Format: <span class="em">Computer-Delivered</span> Reading &amp; Listening + <span class="em">Paper-Based</span> Writing.</h1>
-
-        <p class="hero__sub rv">The IELTS format is changing. BandUltra is built end-to-end to simulate the exact hybrid testing environment — digital Reading and Listening on screen, handwritten Writing marked by your faculty, one band score at the end. <strong>Don't let your students walk into a test they've never seen.</strong></p>
-
-        <div class="hero__cta rv">
-          <a class="btn btn--primary" href="#trial" data-trial-open>Start Free Trial
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="hero__note rv">
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>10-day trial, full platform</span>
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>No card required</span>
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in 48 hours</span>
-        </div>
-      </div>
-
-      <!-- CD-IELTS interface replica -->
-      <div class="sim-stack rv">
-        <div class="sim" id="sim" role="img" aria-label="Screenshot of the BandUltra computer-delivered IELTS reading interface: a split screen with the passage on the left and questions on the right, a countdown timer, highlighting and note tools, and a full-screen lock indicator.">
-          <div class="sim__chrome">
-            <span class="sim__id">bandultra · Academic Reading · Passage 2 of 3</span>
-            <span class="sim__lock">
-              <svg width="9" height="11" viewBox="0 0 10 12" fill="none" aria-hidden="true"><rect x="1" y="5" width="8" height="6.2" rx="1.4" fill="currentColor"/><path d="M2.8 5V3.4a2.2 2.2 0 014.4 0V5" stroke="currentColor" stroke-width="1.3"/></svg>
-              Locked
-            </span>
-          </div>
-
-          <div class="sim__bar">
-            <span class="sim__timer" id="timer">37:41</span>
-            <span class="sim__timerlbl">remaining</span>
-            <div class="sim__tools">
-              <span class="tool" title="Decrease text size">A-</span>
-              <span class="tool" title="Increase text size">A+</span>
-              <span class="tool tool--on" title="Highlighter">
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 10.6l6-6 2.4 2.4-6 6H3v-2.4z" fill="currentColor"/><path d="M2.4 12.6h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </span>
-              <span class="tool" title="Notes">
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="2.2" y="2.2" width="9.6" height="9.6" rx="1.4" stroke="currentColor" stroke-width="1.3"/><path d="M4.4 5.4h5.2M4.4 7.6h3.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-          </div>
-
-          <div class="sim__body">
-            <div class="sim__pane">
-              <div class="sim__ptitle">The Economics of Urban Beekeeping</div>
-              <p class="sim__p">For most of the twentieth century, commercial apiaries were pushed steadily outward from city limits. <span class="hl hl--anim">Municipal by-laws framed hives as a nuisance rather than an asset</span>, and the assumption went largely unchallenged until yield data from rooftop colonies began to contradict it.</p>
-              <p class="sim__p">Rooftop colonies in three European capitals produced, on average, 18% more honey per hive than their rural counterparts — a result researchers attribute to the sheer variety of flowering species in parks and private gardens.</p>
-              <div class="note"><b>Note —</b> "18% more" → check Q14, careful: <i>average</i>, not maximum.</div>
-            </div>
-
-            <div class="sim__pane">
-              <div class="sim__ptitle">Questions 14–16</div>
-              <div class="q">
-                <div class="q__n">14</div>
-                <div class="q__t">Rooftop hives outperformed rural hives mainly because of</div>
-                <div class="q__opts">
-                  <span class="opt"><i></i>warmer city temperatures.</span>
-                  <span class="opt opt--sel"><i></i>a wider range of flowering plants.</span>
-                  <span class="opt"><i></i>fewer commercial pesticides.</span>
-                </div>
-              </div>
-              <div class="q">
-                <div class="q__n">15</div>
-                <div class="q__t">Early municipal by-laws treated hives as a <span style="border-bottom:1.5px solid #2D6BFF;padding:0 22px 1px">&nbsp;</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sim__foot">
-            <span class="pip pip--done">1</span>
-            <span class="pip pip--done">2</span>
-            <span class="pip pip--done">3</span>
-            <span class="pip pip--done">4</span>
-            <span class="pip pip--done">5</span>
-            <span class="pip pip--done">6</span>
-            <span class="pip pip--done">7</span>
-            <span class="pip pip--done">8</span>
-            <span class="pip pip--done">9</span>
-            <span class="pip pip--done">10</span>
-            <span class="pip pip--done">11</span>
-            <span class="pip pip--done">12</span>
-            <span class="pip pip--done">13</span>
-            <span class="pip pip--now">14</span>
-            <span class="pip">15</span>
-            <span class="pip">16</span>
-            <span class="pipnote">Review flagged</span>
-          </div>
-        </div>
-
-        <!-- paper writing sheet, the other half of the hybrid -->
-        <div class="sheet" aria-hidden="true">
-          <div class="sheet__lbl">Writing · Task 2</div>
-          <div class="sheet__ttl">Handwritten sheet</div>
-          <span class="sheet__line"></span><span class="sheet__line"></span>
-          <span class="sheet__line"></span><span class="sheet__line"></span>
-          <span class="sheet__line"></span>
-          <div class="sheet__band"><b>7.0</b><span>Examiner band</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ============================================================ URGENCY -->
-<section class="urgent sec" id="shift">
-  <div class="wrap urgent__grid">
-    <div class="rv">
-      <div class="eyebrow">The transition problem</div>
-      <h2>Your students are about to sit a test they have never practised.</h2>
-      <p class="urgent__lead">Reading and Listening move to screen. Writing stays on paper. That is <strong>two different exam surfaces in a single sitting</strong> — and no mock built for one or the other prepares a candidate for both. Institutes that can't run a true hybrid mock will watch enrolments walk to the ones that can.</p>
-      <div class="hero__cta" style="margin-top:28px">
-        <a class="btn btn--primary" href="#trial" data-trial-open>Get hybrid-ready this week</a>
-      </div>
-    </div>
-
-    <div class="risks rv">
-      <div class="risk">
-        <span class="risk__i" aria-hidden="true">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2.6l5.6 10.2H2.4L8 2.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6.6v3M8 11.4v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </span>
-        <div>
-          <h4>Students freeze on the interface, not the English</h4>
-          <p>Split-screen navigation, on-screen highlighting and a question palette are learned skills. A candidate meeting them for the first time on test day loses marks they had already earned.</p>
-        </div>
-      </div>
-      <div class="risk">
-        <span class="risk__i" aria-hidden="true">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3.4 2.6h9.2v10.8H3.4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.8 5.8h4.4M5.8 8h4.4M5.8 10.2h2.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </span>
-        <div>
-          <h4>Your faculty is still marking Reading by hand</h4>
-          <p>Three hours of answer-sheet checking per batch is three hours not spent on Speaking practice — the module that actually moves band scores.</p>
-        </div>
-      </div>
-      <div class="risk">
-        <span class="risk__i" aria-hidden="true">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.6" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.8V8l2.2 1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </span>
-        <div>
-          <h4>Counsellors have no score to show a parent</h4>
-          <p>Without a clean, branded band report after every mock, the enrolment conversation is a promise instead of a number.</p>
-        </div>
-      </div>
-      <div class="risk risk--fix">
-        <span class="risk__i" aria-hidden="true">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.4l3.3 3.2L13 4.9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <div>
-          <h4>BandUltra closes all three in one sitting</h4>
-          <p>Digital Reading and Listening auto-graded the moment the timer stops, handwritten Writing routed straight to the evaluator queue, and a branded band report in your counsellor's hand before the batch leaves the building.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ PLATFORM / BENTO -->
-<section class="sec" id="platform">
+<main>
+<section class="legal-hero">
   <div class="wrap">
-    <div class="sechead rv">
-      <div class="eyebrow">The platform</div>
-      <h2>One engine for both halves of the hybrid exam.</h2>
-      <p>Everything an institute needs to run, invigilate, mark and report a full four-module mock — without a single spreadsheet.</p>
-    </div>
-
-    <div class="bento">
-      <!-- 1. hybrid engine — the anchor cell -->
-      <article class="cell cell--dark cell--wide rv">
-        <div class="cell__tag">Hybrid test engine</div>
-        <h3>Digital on screen. Writing on paper. One band score.</h3>
-        <p class="cell__d">Schedule a single mock that runs Listening and Reading in the browser, then hands the Writing task to your invigilator as a printed sheet — and stitches all four modules back into one candidate record.</p>
-
-        <div class="split">
-          <div class="split__side">
-            <div class="split__k">On screen</div>
-            <div class="split__m">
-              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Listening · 30 min + transfer</span>
-              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Reading · 60 min</span>
-            </div>
-            <p class="split__note">Auto-graded to band the second the timer hits zero.</p>
-          </div>
-          <div class="split__seam" aria-hidden="true"><b>ONE SITTING</b></div>
-          <div class="split__side split__side--paper">
-            <div class="split__k">On paper</div>
-            <div class="split__m">
-              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:#E8C93C"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Writing Task 1 + 2 · 60 min</span>
-              <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:#E8C93C"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Speaking · face-to-face</span>
-            </div>
-            <p class="split__note">Scanned or scored in-app against the four official criteria.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- 2. reports — companion to the anchor cell -->
-      <article class="cell cell--tall rv">
-        <div class="cell__tag">Reports</div>
-        <h3>Your logo. One click.</h3>
-        <p class="cell__d">Every mock ends in a branded PDF band report. The document a parent takes home carries your institute's mark, not ours.</p>
-
-        <div class="report" aria-hidden="true">
-          <div class="report__top">
-            <span class="report__logo">YOUR LOGO</span>
-            <span class="report__meta">Mock 04 · Academic</span>
-          </div>
-          <div class="report__overall">
-            <b>7.5</b>
-            <span>Overall band</span>
-          </div>
-          <div class="report__rows">
-            <span><i>Listening</i><b>8.0</b></span>
-            <span><i>Reading</i><b>7.5</b></span>
-            <span><i>Writing</i><b>6.5</b><em>paper</em></span>
-            <span><i>Speaking</i><b>7.5</b></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- 3. interface -->
-      <article class="cell cell--half rv">
-        <div class="cell__tag">Test interface</div>
-        <h3>The CD-IELTS screen, rebuilt detail for detail.</h3>
-        <p class="cell__d">Candidates practise on the same split-screen they'll sit the real thing on — so nothing on test day is new.</p>
-        <ul class="cell__list">
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Split-screen passage and question pane</li>
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Three text sizes, toggled mid-test</li>
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Drag-to-highlight and inline sticky notes</li>
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Question palette with review flags</li>
-        </ul>
-      </article>
-
-      <!-- 3. proctoring -->
-      <article class="cell cell--dark cell--half rv">
-        <div class="cell__tag">Proctoring</div>
-        <h3>Full-screen lockdown, enforced.</h3>
-        <p class="cell__d">The browser is sealed for the duration of the paper. Every attempt to leave it is logged against the candidate and surfaced on the invigilator's live dashboard.</p>
-        <div class="chips">
-          <span class="chip">tab switch blocked</span>
-          <span class="chip">copy / paste blocked</span>
-          <span class="chip">exit fullscreen flagged</span>
-          <span class="chip">right-click disabled</span>
-          <span class="chip">second screen detected</span>
-        </div>
-      </article>
-
-      <!-- 4. grading -->
-      <article class="cell cell--half rv">
-        <div class="cell__tag">Grading</div>
-        <h3>Bands in seconds, not evenings.</h3>
-        <p class="cell__d">Reading and Listening convert to the 0–9 scale automatically. Writing and Speaking land in a clean evaluator queue with the four criteria side by side.</p>
-        <div class="ladder" aria-hidden="true">
-          <i style="height:26%"></i><i style="height:34%"></i><i style="height:46%"></i>
-          <i style="height:58%" class="on"></i><i style="height:72%" class="on"></i>
-          <i style="height:88%" class="on"></i><i style="height:100%" class="on"></i>
-          <i style="height:64%"></i><i style="height:40%"></i>
-        </div>
-        <div class="ladder__lbls" aria-hidden="true"><span>4.0</span><span>6.5</span><span>9.0</span></div>
-      </article>
-
-
-      <!-- 6. exam alignment -->
-      <article class="cell cell--half rv">
-        <div class="cell__tag">Content accuracy</div>
-        <h3>Real exam-aligned mocks, calibrated to official difficulty.</h3>
-        <p class="cell__d">Our question banks mirror current test patterns, lexical resource thresholds, and cognitive load so your students never face surprises.</p>
-        <ul class="cell__list">
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Strictly aligned with official task types</li>
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Authentic audio tracks with native pacing</li>
-          <li><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Regularly updated for format shifts</li>
-        </ul>
-      </article>
-
-
-    </div>
+    <div class="eyebrow">Legal</div>
+    <h1>Terms of Service</h1>
+    <div class="legal-meta">Last Updated: 1 September, 2026</div>
   </div>
 </section>
 
-<!-- ============================================================ METRICS -->
-<section class="metrics sec" id="proof" style="padding-block:clamp(56px,6vw,80px)">
+<div class="legal">
   <div class="wrap">
-    <!-- PLACEHOLDER METRICS — replace every figure below with verified numbers -->
-    <div class="metrics__grid metrics__grid--3 rv">
-      <div class="metric"><b class="count" data-target="5000">0<em>+</em></b><span>Hybrid mock tests conducted</span></div>
-      <div class="metric"><b class="count" data-target="100">0<em>+</em></b><span>Institutes running on BandUltra</span></div>
-      <div class="metric"><b>6<em>hrs</em></b><span>Median faculty marking time saved per batch</span></div>
-    </div>
+
+    <p class="legal__intro">
+      These Terms of Service (the "Terms") govern access to and use of the hybrid IELTS/PTE
+      testing infrastructure platform, including our web application, APIs, and related
+      services (collectively, the "Services") provided by
+      <span class="placeholder">[Legal Entity Name]</span>, operating as BandUltra
+      ("BandUltra," "we," "us," or "our").
+    </p>
+
+    <nav class="legal__toc" aria-label="Table of contents">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#s1">1. Introduction and Acceptance</a></li>
+        <li><a href="#s2">2. Definitions</a></li>
+        <li><a href="#s3">3. The Services</a></li>
+        <li><a href="#s4">4. Customer Responsibilities</a></li>
+        <li><a href="#s5">5. Acceptable Use</a></li>
+        <li><a href="#s6">6. Fees and Payment</a></li>
+        <li><a href="#s7">7. Intellectual Property</a></li>
+        <li><a href="#s8">8. Data Protection and Privacy</a></li>
+        <li><a href="#s9">9. Confidentiality</a></li>
+        <li><a href="#s10">10. Warranties and Disclaimers</a></li>
+        <li><a href="#s11">11. Limitation of Liability</a></li>
+        <li><a href="#s12">12. Indemnification</a></li>
+        <li><a href="#s13">13. Term and Termination</a></li>
+        <li><a href="#s14">14. Third-Party Services and Trademarks</a></li>
+        <li><a href="#s15">15. Modifications to These Terms</a></li>
+        <li><a href="#s16">16. General Provisions</a></li>
+        <li><a href="#s17">17. Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <section id="s1">
+      <h2>1. Introduction and Acceptance</h2>
+      <p>
+        These Terms of Service (the "Terms") govern access to and use of the hybrid IELTS/PTE
+        testing infrastructure platform, including our web application, APIs, and related
+        services (collectively, the "Services") provided by
+        <span class="placeholder">[Legal Entity Name]</span>, operating as BandUltra
+        ("BandUltra," "we," "us," or "our").
+      </p>
+      <p>
+        These Terms constitute a binding agreement between BandUltra and the educational
+        institute, coaching center, or test preparation provider identified in the applicable
+        order form or account registration ("Customer," "Institute," or "you"). By accessing or
+        using the Services, or by clicking "I agree" during signup, you represent that you have
+        the authority to bind your organization to these Terms.
+      </p>
+      <p>
+        If your organization has a separately signed Master Services Agreement, Order Form, or
+        similar agreement with BandUltra that references these Terms, that agreement will
+        govern in the event of a conflict.
+      </p>
+    </section>
+
+    <section id="s2">
+      <h2>2. Definitions</h2>
+      <ul>
+        <li><b>"Authorized Users"</b> means Institute personnel (administrators, instructors, staff) and enrolled Test-Takers who are permitted to access the Services under Customer's account.</li>
+        <li><b>"Test-Takers"</b> means students or candidates enrolled by the Institute who take practice tests, mock exams, or assessments through the Services.</li>
+        <li><b>"Customer Data"</b> means data submitted to the Services by or on behalf of Customer, including Test-Taker information, test responses, recordings, and performance data.</li>
+        <li><b>"Order Form"</b> means an ordering document, subscription plan selection, or online checkout flow specifying the Services purchased, fees, and subscription term.</li>
+      </ul>
+    </section>
+
+    <section id="s3">
+      <h2>3. The Services</h2>
+
+      <h3>3.1 Description</h3>
+      <p>
+        BandUltra provides institutes with infrastructure to configure, deliver, and score
+        IELTS/PTE-style practice tests and mock assessments, including Listening, Reading,
+        Writing, and Speaking modules, along with reporting, analytics, and optional proctoring
+        and identity-verification features.
+      </p>
+
+      <h3>3.2 Access and Account Registration</h3>
+      <p>
+        Customer must register for an account to use the Services and is responsible for
+        providing accurate registration information and keeping it up to date. Customer is
+        responsible for all activity occurring under its account, including accounts of its
+        Authorized Users, and must promptly notify BandUltra of any unauthorized use.
+      </p>
+
+      <h3>3.3 Subscription Plans</h3>
+      <p>
+        Access to the Services is provided on the subscription plan, seat count, or usage tier
+        selected in the applicable Order Form. BandUltra may offer different tiers of
+        functionality (e.g., number of test attempts, proctoring features, branding options) as
+        described on our pricing page or in the Order Form.
+      </p>
+
+      <h3>3.4 Changes to the Services</h3>
+      <p>
+        We may update, modify, or discontinue features of the Services from time to time. We
+        will use commercially reasonable efforts to provide advance notice of material changes
+        that negatively affect core functionality Customer relies upon.
+      </p>
+    </section>
+
+    <section id="s4">
+      <h2>4. Customer Responsibilities</h2>
+      <p>Customer is responsible for:</p>
+      <ul>
+        <li>Ensuring it has all necessary rights and consents to submit Customer Data (including Test-Taker personal data) to the Services, and for providing any required notices or obtaining any required consents from Test-Takers or their parents/guardians (where applicable).</li>
+        <li>Managing Authorized User accounts, roles, and permissions within its organization.</li>
+        <li>Ensuring its use of the Services, including any proctoring or ID-verification features, complies with applicable law, including data protection and education-sector regulations in its jurisdiction.</li>
+        <li>Maintaining the confidentiality of login credentials and promptly reporting any suspected security incidents.</li>
+        <li>Ensuring Test-Takers are made aware of and, where applicable, agree to relevant testing conditions and data handling practices.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2>5. Acceptable Use</h2>
+      <p>Customer and its Authorized Users will not, and will not permit any third party to:</p>
+      <ul>
+        <li>Use the Services to violate any applicable law or regulation;</li>
+        <li>Reverse engineer, decompile, or attempt to derive the source code of the Services, except to the extent such restriction is prohibited by law;</li>
+        <li>Resell, sublicense, or provide the Services to any third party outside Customer's own institute operations without BandUltra's prior written consent;</li>
+        <li>Use the Services to develop a competing product or benchmark the Services for a competitor;</li>
+        <li>Circumvent test-integrity, proctoring, or access-control features, or assist Test-Takers in doing so;</li>
+        <li>Upload or transmit malicious code, or attempt to gain unauthorized access to the Services or related systems;</li>
+        <li>Use automated means (scraping, bots) to access the Services except through documented APIs;</li>
+        <li>Misrepresent test results or scores generated by the Services as official IELTS or PTE certification (the Services provide practice/mock assessment functionality and are not affiliated with, endorsed by, or a substitute for official IELTS or PTE examinations administered by their respective rights holders).</li>
+      </ul>
+      <p>BandUltra may suspend access for any account reasonably believed to violate this Section, with notice where practicable.</p>
+    </section>
+
+    <section id="s6">
+      <h2>6. Fees and Payment</h2>
+
+      <h3>6.1 Fees</h3>
+      <p>
+        Customer will pay the fees specified in the applicable Order Form. Except as otherwise
+        stated, fees are non-refundable and are exclusive of applicable taxes, which Customer is
+        responsible for (excluding taxes based on BandUltra's net income).
+      </p>
+
+      <h3>6.2 Billing</h3>
+      <p>
+        Fees will be billed in advance on the cycle specified in the Order Form (e.g., monthly
+        or annually) via the payment method on file, unless otherwise agreed.
+      </p>
+
+      <h3>6.3 Late Payment</h3>
+      <p>
+        Amounts not paid when due may accrue interest at the lesser of 1.5% per month or the
+        maximum rate permitted by law, and BandUltra may suspend the Services for accounts with
+        overdue balances after providing written notice.
+      </p>
+
+      <h3>6.4 Renewal</h3>
+      <p>
+        Subscriptions renew automatically for successive terms equal to the initial subscription
+        term, unless either party provides notice of non-renewal at least
+        <span class="placeholder">[30]</span> days before the end of the then-current term, or
+        as otherwise specified in the Order Form.
+      </p>
+    </section>
+
+    <section id="s7">
+      <h2>7. Intellectual Property</h2>
+
+      <h3>7.1 BandUltra IP</h3>
+      <p>
+        BandUltra retains all right, title, and interest in and to the Services, including all
+        underlying software, scoring models, question banks, and content provided by BandUltra,
+        and all related intellectual property rights. These Terms grant Customer a limited,
+        non-exclusive, non-transferable right to access and use the Services during the
+        subscription term, subject to these Terms.
+      </p>
+
+      <h3>7.2 Customer Data</h3>
+      <p>
+        As between the parties, Customer retains all right, title, and interest in Customer
+        Data. Customer grants BandUltra a limited license to host, process, and display Customer
+        Data solely as necessary to provide the Services, generate aggregated/de-identified
+        analytics, and improve our scoring and assessment models, subject to our
+        <a href="privacy.html">Privacy Policy</a> and any applicable Data Processing Agreement.
+      </p>
+
+      <h3>7.3 Feedback</h3>
+      <p>
+        If Customer provides suggestions or feedback about the Services, BandUltra may use such
+        feedback without obligation or compensation to Customer.
+      </p>
+    </section>
+
+    <section id="s8">
+      <h2>8. Data Protection and Privacy</h2>
+      <p>
+        BandUltra's collection and processing of personal data, including Test-Taker data, is
+        described in our <a href="privacy.html">Privacy Policy</a>, incorporated herein by
+        reference. Where required by applicable data protection law, the parties will enter into
+        a separate Data Processing Agreement governing the processing of personal data.
+      </p>
+    </section>
+
+    <section id="s9">
+      <h2>9. Confidentiality</h2>
+      <p>
+        Each party may have access to non-public information of the other party ("Confidential
+        Information"). Each party agrees to use the other party's Confidential Information
+        solely to perform its obligations under these Terms and to protect it using at least the
+        same degree of care it uses for its own similarly sensitive information, but no less
+        than reasonable care. This Section does not apply to information that is or becomes
+        publicly available through no fault of the receiving party, was already known to the
+        receiving party, or is independently developed.
+      </p>
+    </section>
+
+    <section id="s10">
+      <h2>10. Warranties and Disclaimers</h2>
+
+      <h3>10.1 Mutual Warranties</h3>
+      <p>Each party represents that it has the legal power and authority to enter into these Terms.</p>
+
+      <h3>10.2 Service Warranty</h3>
+      <p>
+        BandUltra will use commercially reasonable efforts to provide the Services in a manner
+        that minimizes errors and interruptions, consistent with any Service Level terms
+        specified in an Order Form.
+      </p>
+
+      <h3>10.3 Disclaimer</h3>
+      <p class="legal__caps">
+        EXCEPT AS EXPRESSLY STATED IN THESE TERMS, THE SERVICES ARE PROVIDED "AS IS" AND "AS
+        AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY,
+        INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
+        NON-INFRINGEMENT. BANDULTRA DOES NOT WARRANT THAT PRACTICE SCORES OR BAND PREDICTIONS
+        GENERATED BY THE SERVICES WILL MATCH RESULTS ACHIEVED ON AN OFFICIAL IELTS OR PTE
+        EXAMINATION.
+      </p>
+    </section>
+
+    <section id="s11">
+      <h2>11. Limitation of Liability</h2>
+      <p class="legal__caps">
+        TO THE MAXIMUM EXTENT PERMITTED BY LAW: (A) NEITHER PARTY WILL BE LIABLE FOR ANY
+        INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF
+        PROFITS, REVENUE, DATA, OR GOODWILL, ARISING OUT OF OR RELATED TO THESE TERMS, EVEN IF
+        ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; AND (B) EACH PARTY'S TOTAL AGGREGATE
+        LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS WILL NOT EXCEED THE FEES PAID OR
+        PAYABLE BY CUSTOMER TO BANDULTRA IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING
+        RISE TO LIABILITY.
+      </p>
+      <p>
+        These limitations will not apply to: (i) either party's indemnification obligations;
+        (ii) breach of confidentiality obligations; (iii) a party's gross negligence or willful
+        misconduct; or (iv) Customer's payment obligations, in each case to the extent permitted
+        by applicable law.
+      </p>
+    </section>
+
+    <section id="s12">
+      <h2>12. Indemnification</h2>
+
+      <h3>12.1 By BandUltra</h3>
+      <p>
+        BandUltra will defend Customer against any third-party claim alleging that the Services,
+        as provided by BandUltra and used in accordance with these Terms, infringe that third
+        party's intellectual property rights, and will indemnify Customer for damages finally
+        awarded, subject to Customer promptly notifying BandUltra of the claim and cooperating in
+        its defense.
+      </p>
+
+      <h3>12.2 By Customer</h3>
+      <p>
+        Customer will defend and indemnify BandUltra against any third-party claim arising from:
+        (i) Customer Data, including any claim that Customer lacked the rights or consents
+        necessary to submit Customer Data to the Services; (ii) Customer's or its Authorized
+        Users' violation of these Terms or applicable law; or (iii) Customer's misuse of the
+        Services.
+      </p>
+    </section>
+
+    <section id="s13">
+      <h2>13. Term and Termination</h2>
+
+      <h3>13.1 Term</h3>
+      <p>
+        These Terms remain in effect for as long as Customer has an active subscription to the
+        Services, or until terminated as provided herein.
+      </p>
+
+      <h3>13.2 Termination for Convenience</h3>
+      <p>
+        Either party may decline to renew a subscription by providing notice as described in
+        <a href="#s6">Section 6.4</a>.
+      </p>
+
+      <h3>13.3 Termination for Cause</h3>
+      <p>
+        Either party may terminate these Terms if the other party materially breaches these
+        Terms and fails to cure such breach within <span class="placeholder">[30]</span> days of
+        written notice. BandUltra may suspend or terminate access immediately for breaches of
+        <a href="#s5">Section 5 (Acceptable Use)</a> or non-payment.
+      </p>
+
+      <h3>13.4 Effect of Termination</h3>
+      <p>
+        Upon termination, Customer's right to access the Services ends. BandUltra will make
+        Customer Data available for export for a period of <span class="placeholder">[30]</span>
+        days following termination, after which BandUltra may delete Customer Data in accordance
+        with our data retention practices and <a href="privacy.html">Privacy Policy</a>, except
+        as required to be retained by law.
+      </p>
+
+      <h3>13.5 Survival</h3>
+      <p>
+        Sections relating to Fees (for amounts owed), Intellectual Property, Confidentiality,
+        Warranties/Disclaimers, Limitation of Liability, Indemnification, and Governing Law will
+        survive termination.
+      </p>
+    </section>
+
+    <section id="s14">
+      <h2>14. Third-Party Services and Trademarks</h2>
+      <p>
+        The Services may integrate with third-party tools (e.g., single sign-on, payment
+        processors). BandUltra is not responsible for the availability or performance of
+        third-party services. "IELTS" and "PTE" are trademarks of their respective owners;
+        BandUltra is an independent provider of practice and testing infrastructure and is not
+        affiliated with, sponsored by, or endorsed by the official IELTS or PTE examination
+        bodies.
+      </p>
+    </section>
+
+    <section id="s15">
+      <h2>15. Modifications to These Terms</h2>
+      <p>
+        BandUltra may update these Terms from time to time. We will provide notice of material
+        changes (e.g., via email or in-app notice) at least <span class="placeholder">[15]</span>
+        days before they take effect. Continued use of the Services after the effective date of
+        updated Terms constitutes acceptance. If Customer does not agree to updated Terms,
+        Customer may decline renewal in accordance with <a href="#s6">Section 6.4</a>.
+      </p>
+    </section>
+
+    <section id="s16">
+      <h2>16. General Provisions</h2>
+
+      <h3>16.1 Governing Law</h3>
+      <p>
+        These Terms are governed by the laws of
+        <span class="placeholder">[Insert Jurisdiction]</span>, without regard to its conflict
+        of laws principles.
+      </p>
+
+      <h3>16.2 Dispute Resolution</h3>
+      <p>
+        Any dispute arising out of these Terms will be resolved through
+        <span class="placeholder">[arbitration/courts of Insert Jurisdiction]</span>, as further
+        described in <span class="placeholder">[Insert Dispute Resolution Mechanism]</span>.
+      </p>
+
+      <h3>16.3 Assignment</h3>
+      <p>
+        Neither party may assign these Terms without the other party's prior written consent,
+        except in connection with a merger, acquisition, or sale of substantially all assets,
+        provided the assigning party gives notice of such assignment.
+      </p>
+
+      <h3>16.4 Force Majeure</h3>
+      <p>
+        Neither party will be liable for any failure or delay in performance due to
+        circumstances beyond its reasonable control, including natural disasters, internet or
+        utility failures, or governmental action.
+      </p>
+
+      <h3>16.5 Entire Agreement</h3>
+      <p>
+        These Terms, together with any applicable Order Form, <a href="privacy.html">Privacy
+        Policy</a>, and Data Processing Agreement, constitute the entire agreement between the
+        parties regarding the Services and supersede any prior agreements on the subject matter.
+      </p>
+
+      <h3>16.6 Severability</h3>
+      <p>
+        If any provision of these Terms is found unenforceable, the remaining provisions will
+        remain in full force and effect.
+      </p>
+
+      <h3>16.7 Notices</h3>
+      <p>
+        Notices under these Terms will be sent to the contact details provided during account
+        registration or to the address below.
+      </p>
+    </section>
+
+    <section id="s17">
+      <h2>17. Contact Us</h2>
+      <p>BandUltra, Haryana</p>
+      <p>Email: <a href="mailto:sales@bandultra.com">sales@bandultra.com</a></p>
+    </section>
+
   </div>
-</section>
+</div>
+</main>
 
 
-
-<!-- ============================================================ PRICING -->
-<section class="pricing sec" id="pricing">
-  <div class="wrap">
-    <div class="sechead rv">
-      <div class="eyebrow">Pricing &amp; Plans</div>
-      <h2>Get in touch for institute access.</h2>
-      <p>Contact us to discuss your requirements and deploy the full hybrid engine for your centre.</p>
-    </div>
-
-    <div class="pricing-single rv">
-      <article class="plan-single">
-        <div class="plan-single__n">Institute Plan</div>
-        <div class="plan-single__for">Complete hybrid test engine infrastructure for IELTS coaching institutes.</div>
-        <div class="plan-single__p">Contact sales@bandultra.com</div>
-        <ul class="plan-single__f">
-          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full <b>hybrid test engine</b> &amp; CD-IELTS interface</span></li>
-          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full-screen proctoring and automated band conversion</span></li>
-          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evaluator workflow queues and branded PDF reports</span></li>
-        </ul>
-        <div class="plan-single__actions">
-          <a class="btn btn--primary btn--wide" href="mailto:sales@bandultra.com">Contact sales@bandultra.com</a>
-          <a class="btn btn--whatsapp btn--wide" href="https://wa.me/919996722631?text=Hi%20BandUltra!%20I%20want%20to%20know%20more%20about%20the%20Institute%20Plan%20pricing.%0A%0AMy%20details:%0AName:%20%0AInstitute:%20%0AQuery:%20" target="_blank" rel="noopener noreferrer">
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Chat on WhatsApp</span>
-          </a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ FAQ -->
-<section class="sec" id="faq">
-  <div class="wrap faq">
-    <div class="sechead rv">
-      <div class="eyebrow">Before you ask</div>
-      <h2>The five questions every director asks.</h2>
-      <p>If yours isn't here, contact us directly and we'll answer it live.</p>
-    </div>
-
-    <div class="faq__list rv">
-      <details class="qa" open>
-        <summary>How fast is onboarding?</summary>
-        <div class="qa__a">Most institutes run their first live mock within 48 hours. Set up your test parameters and pick a test date — we handle the rest. Enterprise accounts get a dedicated onboarding manager who sets up branches and roles with you on a call.</div>
-      </details>
-      <details class="qa">
-        <summary>Is student data secure?</summary>
-        <div class="qa__a">Data is encrypted in transit and at rest, hosted in-region, and access is scoped by role so a branch coordinator only ever sees their own centre. You can export or permanently delete a student record at any time, and archived students stop counting toward your plan while their history stays intact.</div>
-      </details>
-      <details class="qa">
-        <summary>Can I use my own institute logo?</summary>
-        <div class="qa__a">Yes — on the student login screen, the test interface header and every PDF band report. Custom domain options are also available so students never see a BandUltra URL.</div>
-      </details>
-      <details class="qa">
-        <summary>What if my centre loses internet mid-test?</summary>
-        <div class="qa__a">Answers are written locally as the candidate works and sync the moment the connection returns. The timer pauses on disconnect and the invigilator can resume the session from the exact question the student was on.</div>
-      </details>
-      <details class="qa">
-        <summary>Do we have to switch our whole institute at once?</summary>
-        <div class="qa__a">No. Most institutes start with one batch on the trial, run a parallel mock against their existing process, and move the rest once faculty are comfortable. Nothing about your current paper workflow has to change on day one.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ CONVERT -->
-<section class="final sec" id="trial">
-  <div class="wrap final__in">
-    <div class="final__grid rv">
-      <div class="final__pitch">
-        <div class="eyebrow" style="color:var(--emerald)">Hybrid rollout &middot; <span class="js-shift-date">September</span></div>
-        <h2>The institutes that are ready will take the enrolments.</h2>
-        <p>Start a free trial today and run your first true hybrid mock this week — digital Reading and Listening, handwritten Writing, one band report in your counsellor's hand.</p>
-        <div class="hero__cta" style="margin-top:28px">
-          <a class="btn btn--primary" href="#trial-form" data-trial-open>Start Free Trial
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-        <p class="hero__note" style="justify-content:center;margin-top:18px">
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>10-day trial</span>
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>No card required</span>
-          <span><svg class="tick" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>Cancel anytime</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ FOOTER -->
 <footer class="foot">
   <div class="wrap">
     <div class="foot__grid">
       <div>
-        <a class="brand" href="#top"><span class="brand__mark" style="background:#060F1E;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-1px;">BU</span>BandUltra</a>
+        <a class="brand" href="index.html"><span class="brand__mark" style="background:#060F1E;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-1px;">BU</span>BandUltra</a>
         <p class="foot__about">Hybrid mock testing infrastructure for IELTS coaching institutes. Built for the format the exam is moving to.</p>
       </div>
       <div>
         <h5>Platform</h5>
         <ul>
-          <li><a href="#platform">Hybrid test engine</a></li>
-          <li><a href="#platform">CD-IELTS interface</a></li>
-          <li><a href="#platform">Proctoring</a></li>
-          <li><a href="#platform">Institute dashboard</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="index.html#platform">Hybrid test engine</a></li>
+          <li><a href="index.html#platform">CD-IELTS interface</a></li>
+          <li><a href="index.html#platform">Proctoring</a></li>
+          <li><a href="index.html#platform">Institute dashboard</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
         </ul>
       </div>
       <div>
         <h5>Company</h5>
         <ul>
-          <li><a href="#shift">The format shift</a></li>
-          <li><a href="#proof">Customer results</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="index.html#shift">The format shift</a></li>
+          <li><a href="index.html#proof">Customer results</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
@@ -1400,7 +1443,7 @@ details.qa summary:hover{color:var(--emerald-deep)}
       <span>© <span id="yr">2026</span> BandUltra. All rights reserved.</span>
       <span class="foot__legal">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="terms.html" aria-current="page">Terms of Service</a>
       </span>
     </div>
 
@@ -1412,84 +1455,11 @@ details.qa summary:hover{color:var(--emerald-deep)}
 
 <script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   /* current year */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* scroll reveal */
-  var items = Array.prototype.slice.call(document.querySelectorAll('.rv'));
-  if (reduce || !('IntersectionObserver' in window)) {
-    items.forEach(function(el){ el.classList.add('in'); });
-  } else {
-    /* The observer's rootMargin trims 8% off the BOTTOM of the viewport
-     * before testing intersection — right for content that scrolls up into
-     * view, since it reveals a beat before it reaches the true edge. But
-     * anything that already sits inside that excluded band on initial load
-     * (nothing to scroll — it's already on screen) never registers as
-     * intersecting in the first place, and there is no later scroll event
-     * to re-trigger it: it stays at opacity:0 indefinitely for a visitor
-     * who never scrolls. The hero CTA sits exactly there on common laptop
-     * heights after the fold-tightening pass. Fix: check the real,
-     * untrimmed viewport synchronously first and reveal on-screen items
-     * immediately; only hand the rest to the observer.
-     */
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    var toObserve = [];
-    items.forEach(function(el){
-      var r = el.getBoundingClientRect();
-      if (r.top < vh && r.bottom > 0) { el.classList.add('in'); }
-      else { toObserve.push(el); }
-    });
-
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (!e.isIntersecting) return;
-        var sibs = Array.prototype.slice.call(e.target.parentNode.children).filter(function(n){
-          return n.classList && n.classList.contains('rv');
-        });
-        var i = Math.min(sibs.indexOf(e.target), 5);
-        e.target.style.transitionDelay = (i > 0 ? i * 70 : 0) + 'ms';
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-    toObserve.forEach(function(el){ io.observe(el); });
-  }
-
-  /* exam timer + highlight sweep, only while the sim is on screen */
-  var sim = document.getElementById('sim');
-  var timer = document.getElementById('timer');
-  if (sim && timer) {
-    var left = 37 * 60 + 41, tick = null;
-    function paint(){
-      var m = Math.floor(left / 60), s = left % 60;
-      timer.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    }
-    function start(){
-      sim.classList.add('is-live');
-      if (tick || reduce) return;
-      tick = setInterval(function(){ if (left > 0) { left--; paint(); } }, 1000);
-    }
-    function stop(){ if (tick) { clearInterval(tick); tick = null; } }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function(es){
-        es.forEach(function(e){ e.isIntersecting ? start() : stop(); });
-      }, { threshold: 0.25 }).observe(sim);
-    } else { start(); }
-    document.addEventListener('visibilitychange', function(){
-      if (document.hidden) stop();
-    });
-  }
-
-
-  /* --------------------------------------------------------- mobile menu --
-   * Compact header menu for <=900px. The trigger sits in the header bar and
-   * the panel drops below it. Closes on: toggle, link tap, Escape, outside
-   * click, and on resize past the breakpoint — so a menu left open on a phone
-   * cannot linger invisibly once the layout returns to desktop.
-   */
+  /* --------------------------------------------------------- mobile menu -- */
   (function () {
     var toggle = document.getElementById('navToggle');
     var panel  = document.getElementById('navMenu');
@@ -1507,15 +1477,6 @@ details.qa summary:hover{color:var(--emerald-deep)}
       setOpen(panel.hidden);
     });
 
-    // Any link inside the panel closes it — including the trial CTA.
-    //
-    // This is bound on DOCUMENT in the capture phase, not on the panel. The
-    // trial-modal opener is also a document-level capture listener and calls
-    // stopPropagation(), so a listener on the panel never runs for that link
-    // and the menu was left open behind the modal. Two capture listeners on
-    // the same node fire in registration order, and this script is spliced
-    // into the page's own IIFE — which runs before the modal script appended
-    // at the end of <body> — so this one wins.
     document.addEventListener('click', function (e) {
       if (panel.hidden || !e.target.closest) return;
       if (e.target.closest('#navMenu a')) setOpen(false);
@@ -1535,7 +1496,8 @@ details.qa summary:hover{color:var(--emerald-deep)}
     });
   })();
 
-  /* smooth in-page nav */
+  /* smooth scroll for same-page anchors (table of contents) */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -1546,184 +1508,6 @@ details.qa summary:hover{color:var(--emerald-deep)}
     e.preventDefault();
     t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   });
-
-  /* number counter animation */
-  var counters = document.querySelectorAll('.count');
-  var speed = 200;
-  
-  function runCounters(){
-    counters.forEach(function(counter){
-      var target = +counter.getAttribute('data-target');
-      var emTag = counter.querySelector('em');
-      var count = 0;
-      var inc = target / speed;
-      
-      var updateCount = function(){
-        count += inc;
-        if(count < target){
-          counter.firstChild.textContent = Math.ceil(count).toLocaleString();
-          setTimeout(updateCount, 15);
-        } else {
-          counter.firstChild.textContent = target.toLocaleString();
-        }
-      };
-      updateCount();
-    });
-  }
-
-  var metricsSec = document.getElementById('proof');
-  if (metricsSec && 'IntersectionObserver' in window && !reduce) {
-    var counterObs = new IntersectionObserver(function(entries, observer){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          runCounters();
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counterObs.observe(metricsSec);
-  } else {
-    runCounters();
-  }
-
-})();
-</script>
-
-<!-- ============================================ FREE TRIAL MODAL -->
-<div class="tm-backdrop" id="trialModal" role="dialog" aria-modal="true"
-     aria-labelledby="tmTitle" aria-describedby="tmSub" hidden>
-  <div class="tm" role="document">
-
-    <button type="button" class="tm__x" data-trial-close aria-label="Close dialog">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-      </svg>
-    </button>
-
-    <!-- ---------------------------------------------------- form view -->
-    <div class="tm__view">
-      <div class="tm__head">
-        <div class="tm__eyebrow">10-day free trial</div>
-        <h3 class="tm__title" id="tmTitle">Start your free trial</h3>
-        <p class="tm__sub" id="tmSub">
-          Message us on WhatsApp with your institute's name and we'll have your
-          hybrid mock live within 48 hours — no forms to fill in.
-        </p>
-      </div>
-
-      <div class="tm__form">
-        <a class="btn btn--primary btn--wide tm__submit"
-           href="https://wa.me/919996722631?text=Hi%20BandUltra!%20I%20want%20to%20start%20my%2010-day%20free%20trial.%0A%0AHere%20are%20my%20details:%0AName:%20%0AInstitute%20Name:%20%0AEmail:%20%0AAddress:%20"
-           target="_blank" rel="noopener noreferrer">
-          <span>Contact us on WhatsApp</span>
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-
-        <p class="tm__legal">
-          Opens WhatsApp in a new tab &middot; No card required &middot; Cancel anytime.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ==================================== FREE TRIAL MODAL (WHATSAPP) ==================================== -->
-<script>
-(function () {
-  'use strict';
-
-  var modal = document.getElementById('trialModal');
-  if (!modal) return;
-
-  var lastFocused = null;
-
-  /* ------------------------------------------------- open / close / focus -- */
-  var FOCUSABLE = 'button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
-
-  function openModal(trigger) {
-    lastFocused = trigger || document.activeElement;
-    modal.hidden = false;
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    // Next frame, so the opacity/transform transition actually runs.
-    requestAnimationFrame(function () {
-      modal.classList.add('is-visible');
-      var cta = modal.querySelector('.tm__submit');
-      if (cta) cta.focus();
-    });
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-visible');
-    document.body.style.overflow = '';
-    var finish = function () {
-      modal.classList.remove('is-open');
-      modal.hidden = true;
-      if (lastFocused && lastFocused.focus) lastFocused.focus();
-    };
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) finish(); else setTimeout(finish, 220);
-  }
-
-  /* Wire every trial CTA on the page.
-   *
-   * Registered in the CAPTURE phase and stopping propagation, because the
-   * page's own smooth-scroll handler (document-level, bubble phase, registered
-   * earlier in the document) matches any a[href^="#"] and would scroll the page
-   * to the #trial section before the modal opened. Capture runs first, so the
-   * modal wins while href="#trial" stays a working no-JS fallback.
-   */
-  document.addEventListener('click', function (event) {
-    if (!event.target || !event.target.closest) return;
-
-    var opener = event.target.closest('[data-trial-open]');
-    if (opener) {
-      event.preventDefault();
-      event.stopPropagation();
-      openModal(opener);
-      return;
-    }
-
-    var closer = event.target.closest('[data-trial-close]');
-    if (closer) {
-      event.preventDefault();
-      event.stopPropagation();
-      closeModal();
-      return;
-    }
-
-    // Click on the backdrop itself (not the panel) closes.
-    if (event.target === modal) {
-      event.stopPropagation();
-      closeModal();
-    }
-  }, true);
-
-  document.addEventListener('keydown', function (event) {
-    if (modal.hidden) return;
-
-    if (event.key === 'Escape') { event.preventDefault(); closeModal(); return; }
-
-    // Focus trap.
-    if (event.key === 'Tab') {
-      var nodes = Array.prototype.filter.call(
-        modal.querySelectorAll(FOCUSABLE),
-        function (el) { return el.offsetParent !== null; }
-      );
-      if (!nodes.length) return;
-      var first = nodes[0];
-      var last  = nodes[nodes.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault(); last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault(); first.focus();
-      }
-    }
-  });
-
-  // Deep link: /#trial-form opens the modal on load.
-  if (window.location.hash === '#trial-form') openModal(null);
 })();
 </script>
 
