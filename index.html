@@ -150,6 +150,8 @@ img,svg{max-width:100%}
 .btn--ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(146,171,204,.5);transform:translateY(-1.5px)}
 .btn--outline{background:transparent;color:var(--text);border-color:var(--rule-2)}
 .btn--outline:hover{border-color:var(--text-3);transform:translateY(-1.5px)}
+.btn--whatsapp{background:rgba(37,211,102,.08);color:#5FE38C;border-color:rgba(37,211,102,.45)}
+.btn--whatsapp:hover{background:rgba(37,211,102,.16);border-color:rgba(37,211,102,.75);transform:translateY(-1.5px)}
 .btn--sm{padding:11px 17px;font-size:14px}
 .btn--wide{width:100%}
 
@@ -510,6 +512,7 @@ h1.hero__h{font-size:clamp(38px,5.1vw,62px);letter-spacing:-.038em;line-height:1
 .plan-single__f li{display:grid;grid-template-columns:auto 1fr;gap:12px;font-size:15px;line-height:1.5;color:var(--on-navy-2)}
 .plan-single__f svg{margin-top:4px;color:var(--emerald)}
 .plan-single__f b{font-weight:600;color:var(--on-navy)}
+.plan-single__actions{display:grid;gap:12px}
 :root[data-theme="dark"] .plan-single{background:var(--navy-950);border-color:rgba(0,196,140,.36)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .plan-single{background:var(--navy-950);border-color:rgba(0,196,140,.36)}}
 
@@ -813,6 +816,7 @@ details.qa summary:hover{color:var(--emerald-deep)}
   .btn--primary:hover,
   .btn--ghost:hover,
   .btn--outline:hover,
+  .btn--whatsapp:hover,
   .nav__toggle:hover { transform: none; }
   .cell:hover { transform: none; box-shadow: var(--shadow-sm); }
 }
@@ -1288,7 +1292,13 @@ details.qa summary:hover{color:var(--emerald-deep)}
           <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full-screen proctoring and automated band conversion</span></li>
           <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evaluator workflow queues and branded PDF reports</span></li>
         </ul>
-        <a class="btn btn--primary btn--wide" href="mailto:sales@bandultra.com">Contact sales@bandultra.com</a>
+        <div class="plan-single__actions">
+          <a class="btn btn--primary btn--wide" href="mailto:sales@bandultra.com">Contact sales@bandultra.com</a>
+          <a class="btn btn--whatsapp btn--wide" href="https://wa.me/919996722631?text=Hi%20BandUltra!%20I%20want%20to%20know%20more%20about%20the%20Institute%20Plan%20pricing.%0A%0AMy%20details:%0AName:%20%0AInstitute:%20%0AQuery:%20" target="_blank" rel="noopener noreferrer">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
       </article>
     </div>
   </div>
