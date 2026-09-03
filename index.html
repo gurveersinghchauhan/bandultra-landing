@@ -102,8 +102,9 @@
 html{
   -webkit-text-size-adjust:100%;text-size-adjust:100%;
   -webkit-tap-highlight-color:transparent;
+  overflow-x:hidden;
 }
-*,*::before,*::after{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box;min-width:0}
 [hidden]{display:none !important}
 body{
   margin:0;
@@ -575,17 +576,20 @@ details.qa summary:hover{color:var(--emerald-deep)}
 .watermark b em{font-style:normal;-webkit-text-stroke:1.4px rgba(0,196,140,.55)}
 
 /* ---------------------------------------------------------------- reveal */
-/* will-change forces the browser to promote each card to its own GPU layer
-   before the transform/opacity transition starts. Without it, mobile Chrome
-   (Android) will sometimes rasterize a scroll-triggered transform on an
-   overflow:hidden + border-radius element into a corrupted, clipped tile —
-   the card paints as a narrow sliver of content next to blank space until
-   the next repaint. Promoting the layer up front avoids that mid-transition
-   corruption entirely. */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .68s cubic-bezier(.16,.84,.44,1),transform .68s cubic-bezier(.16,.84,.44,1);will-change:opacity,transform}
-.rv.in{opacity:1;transform:none}
+/* Opacity-only on purpose. This used to also animate transform:translateY,
+   which is the actual trigger for a real mobile-Chrome bug: a scroll-
+   triggered `transform` on an element that also has overflow:hidden +
+   border-radius (.cell, .metrics__grid) can get rasterized into a
+   corrupted, clipped tile — the card paints as a narrow sliver of content
+   next to blank space until the next repaint. will-change mitigates it but
+   doesn't reliably prevent it on every Android GPU/driver combination.
+   Dropping the transform removes the trigger entirely instead of hoping a
+   compositing hint saves every device — opacity-only transitions don't hit
+   this path. */
+.rv{opacity:0;transition:opacity .5s cubic-bezier(.16,.84,.44,1);will-change:opacity}
+.rv.in{opacity:1}
 @media (prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none;will-change:auto}
+  .rv{opacity:1;transition:none;will-change:auto}
   .sim.is-live .hl--anim{animation:none;background:var(--marker)}
   *{scroll-behavior:auto !important}
 }
