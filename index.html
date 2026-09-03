@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>BandUltra</title>
+<!doctype html><html lang="en" data-api-base="https://api.bandultra.com"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>BandUltra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -619,7 +619,17 @@ details.qa summary:hover{color:var(--emerald-deep)}
   .tm{transform:none}
 }
 
-.tm__head{padding:26px 28px 0;position:relative}
+/* No position:relative here (on purpose). .tm__x is absolutely positioned
+   against .tm and sits BEFORE this element in the DOM. Positioned elements
+   with z-index:auto stack in DOM order among themselves — so the moment
+   this box also became `position:relative`, it out-stacked .tm__x (later
+   in source) and its full-width, transparent box sat on top of the close
+   button, silently eating every click/tap in that corner even though
+   nothing was visible there. Confirmed with elementFromPoint(): the hit
+   target at the button's own coordinates was .tm__eyebrow, a child of this
+   div, not the button. Nothing inside .tm__head is itself absolutely
+   positioned, so it never needed to be a positioning context. */
+.tm__head{padding:26px 28px 0}
 .tm__eyebrow{
   font-family:var(--mono);font-size:10.5px;font-weight:600;
   letter-spacing:.13em;text-transform:uppercase;color:var(--emerald-deep);
@@ -628,7 +638,7 @@ details.qa summary:hover{color:var(--emerald-deep)}
 .tm__sub{font-size:14.5px;line-height:1.5;color:var(--text-2);margin:0}
 
 .tm__x{
-  position:absolute;top:18px;right:18px;
+  position:absolute;top:18px;right:18px;z-index:1;
   width:34px;height:34px;display:grid;place-items:center;
   background:transparent;border:1px solid var(--rule);border-radius:9px;
   color:var(--text-3);cursor:pointer;transition:all .16s ease;
@@ -755,6 +765,37 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
 .nav__toggle[aria-expanded="true"] .nav__bars i:nth-child(2) { opacity: 0; }
 .nav__toggle[aria-expanded="true"] .nav__bars i:nth-child(3) { transform: translateY(-5.1px) rotate(-45deg); }
 @media (prefers-reduced-motion: reduce) { .nav__bars i { transition: none; } }
+
+/* ==========================================================================
+   DESKTOP HERO — fold tightening
+   --------------------------------------------------------------------------
+   On a 1366x768 or 1080p laptop, the browser chrome (tabs/address bar) eats
+   roughly 100-150px of real viewport height, and the stock hero spacing
+   pushed the CTA button ~930px from the top — off-screen on anything short
+   of a full 1080px-tall viewport with zero chrome. The H1 alone ran 7 lines
+   at ~65px each (455px) because it's rendered as long headline copy at a
+   font-size that's clamped to a fixed 62px across the whole desktop range
+   (5.1vw only exceeds 62px above ~1216px, so this affects every laptop
+   width, not just small ones). Scoped to min-width:1024px so mobile/tablet
+   spacing (already tuned separately) is untouched.
+   ========================================================================== */
+@media (min-width: 1024px) {
+  /* 1. Gap between the sticky nav and the "Format change" badge. */
+  .hero__in { padding-block-start: 24px; }
+
+  /* 2. Vertical rhythm of the left column: badge → H1 → paragraph → CTA →
+        trust note. Each value below is a straight reduction of the
+        existing margin, same properties, just less of them. */
+  .flag        { margin-bottom: 10px; }
+  .hero__sub   { margin-top: 10px; }
+  .hero__cta   { margin-top: 14px; }
+  .hero__note  { margin-top: 6px; }
+
+  /* 3. H1 line-height only (not font-size, per scope) — still comfortably
+        clear of the glyphs' descenders, but this headline wraps to 7 lines
+        on this column width, so every hundredth of line-height is ~4px x7. */
+  h1.hero__h { line-height: 0.94; }
+}
 
 /* ==========================================================================
    MOBILE LAYER
@@ -1461,6 +1502,26 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
   if (reduce || !('IntersectionObserver' in window)) {
     items.forEach(function(el){ el.classList.add('in'); });
   } else {
+    /* The observer's rootMargin trims 8% off the BOTTOM of the viewport
+     * before testing intersection — right for content that scrolls up into
+     * view, since it reveals a beat before it reaches the true edge. But
+     * anything that already sits inside that excluded band on initial load
+     * (nothing to scroll — it's already on screen) never registers as
+     * intersecting in the first place, and there is no later scroll event
+     * to re-trigger it: it stays at opacity:0 indefinitely for a visitor
+     * who never scrolls. The hero CTA sits exactly there on common laptop
+     * heights after the fold-tightening pass. Fix: check the real,
+     * untrimmed viewport synchronously first and reveal on-screen items
+     * immediately; only hand the rest to the observer.
+     */
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var toObserve = [];
+    items.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.classList.add('in'); }
+      else { toObserve.push(el); }
+    });
+
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (!e.isIntersecting) return;
@@ -1473,7 +1534,7 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
         io.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-    items.forEach(function(el){ io.observe(el); });
+    toObserve.forEach(function(el){ io.observe(el); });
   }
 
   /* exam timer + highlight sweep, only while the sim is on screen */
@@ -1734,12 +1795,25 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
   /* ----------------------------------------------------------------- config --
    * Point this at the deployed API. Overridable without editing the file by
    * setting window.BANDULTRA_API_BASE before this script runs, or by adding
-   * data-api-base="https://api.bandultra.com" to the <html> element.
+   * data-api-base="..." to the <html> element (both now set — see below).
+   *
+   * The bug this used to have: the final fallback was an unconditional
+   * 'http://localhost:4000'. The <html> tag never actually carried
+   * data-api-base on the deployed page, so every real visitor's browser
+   * fell through to that literal fallback and tried to POST to their OWN
+   * machine's localhost:4000 — nothing is ever listening there, so the
+   * fetch failed outright and every submission showed the generic
+   * "We could not reach our servers" network-error message. Fixed in two
+   * layers: the <html> tag now carries the real data-api-base, and this
+   * fallback only ever points at localhost when the page itself is being
+   * served from localhost — anywhere else it falls back to the production
+   * API instead of an address that can never resolve for a real visitor.
    * ------------------------------------------------------------------------ */
+  var ON_LOCALHOST = /^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname);
   var API_BASE =
     window.BANDULTRA_API_BASE ||
     document.documentElement.getAttribute('data-api-base') ||
-    'http://localhost:4000';
+    (ON_LOCALHOST ? 'http://localhost:4000' : 'https://api.bandultra.com');
   var ENDPOINT = API_BASE.replace(/\/+$/, '') + '/api/v1/trial-requests';
 
   /* Country codes offered in the dial-code select. `min`/`max` are national
