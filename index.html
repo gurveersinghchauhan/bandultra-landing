@@ -1300,6 +1300,12 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
         </p>
       </div>
 
+      <!-- Placeholder convention: every field has a visible <label>, so a
+           placeholder that merely repeats it is noise (and disappears the
+           moment the user types). Placeholders are therefore EMPTY except
+           where a format is genuinely non-obvious — the phone field, whose
+           hint is generated per country. Never put realistic-looking names,
+           emails, numbers or addresses here: they read as pre-filled data. -->
       <form class="tm__form" id="trialForm" novalidate>
         <div class="tm__alert" id="tmAlert" role="alert">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="flex:none;margin-top:1px">
@@ -1312,16 +1318,14 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
         <div class="tm__row" data-field="name">
           <label for="tmName">Your name<span class="tm__req">*</span></label>
           <input class="tm__input" id="tmName" name="name" type="text"
-                 autocomplete="name" maxlength="120" required
-                 placeholder="Priya Sharma">
+                 autocomplete="name" maxlength="120" required>
           <span class="tm__err" id="tmNameErr"></span>
         </div>
 
         <div class="tm__row" data-field="instituteName">
           <label for="tmInstitute">Institute name<span class="tm__req">*</span></label>
           <input class="tm__input" id="tmInstitute" name="instituteName" type="text"
-                 autocomplete="organization" maxlength="160" required
-                 placeholder="Bright Future IELTS Academy">
+                 autocomplete="organization" maxlength="160" required>
           <span class="tm__err" id="tmInstituteErr"></span>
         </div>
 
@@ -1331,9 +1335,12 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
             <select class="tm__select" id="tmDial" aria-label="Country calling code">
               <!-- populated at runtime -->
             </select>
+            <!-- placeholder is set by syncPhoneUi() to a per-country FORMAT
+                 hint ("10-digit mobile number"). Never a sample number: a
+                 realistic-looking value reads as pre-filled data. -->
             <input class="tm__input" id="tmPhone" name="whatsappNumber" type="tel"
                    inputmode="tel" autocomplete="tel-national" maxlength="18" required
-                   placeholder="98765 43210">
+                   placeholder="">
           </div>
           <span class="tm__hint" id="tmPhoneHint">We'll send your trial confirmation here.</span>
           <span class="tm__err" id="tmPhoneErr"></span>
@@ -1342,16 +1349,14 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
         <div class="tm__row" data-field="email">
           <label for="tmEmail">Email<span class="tm__req">*</span></label>
           <input class="tm__input" id="tmEmail" name="email" type="email"
-                 autocomplete="email" maxlength="254" required
-                 placeholder="priya@brightfuture.edu">
+                 autocomplete="email" maxlength="254" required>
           <span class="tm__err" id="tmEmailErr"></span>
         </div>
 
         <div class="tm__row" data-field="address">
           <label for="tmAddress">Institute address<span class="tm__opt">Optional</span></label>
           <textarea class="tm__input" id="tmAddress" name="address" rows="2"
-                    autocomplete="street-address" maxlength="400"
-                    placeholder="Sector 17, Chandigarh"></textarea>
+                    autocomplete="street-address" maxlength="400"></textarea>
           <span class="tm__err" id="tmAddressErr"></span>
         </div>
 
@@ -1476,14 +1481,20 @@ textarea.tm__input{resize:vertical;min-height:62px;line-height:1.45}
     return DIALS[0];
   }
 
+  /**
+   * Describe the EXPECTED FORMAT for the selected country — never a sample
+   * number. A realistic-looking placeholder reads as pre-filled data, and
+   * users have been observed submitting it verbatim.
+   */
   function syncPhoneUi() {
     var d = currentDial();
     if (d.c === 'OTHER') {
-      phone.placeholder = '+49 30 1234567';
+      phone.placeholder = 'Number with country code';
       hint.textContent  = 'Include the full country code, starting with +.';
     } else {
-      phone.placeholder = d.c === 'IN' ? '98765 43210' : 'Number without ' + d.d;
-      hint.textContent  = 'We’ll send your trial confirmation to ' + d.d + ' …';
+      phone.placeholder = (d.min === d.max ? d.min : d.min + '\u2013' + d.max) +
+                          '-digit mobile number';
+      hint.textContent  = 'We\u2019ll send your trial confirmation to this ' + d.d + ' number.';
     }
   }
   dial.addEventListener('change', function () { syncPhoneUi(); clearError('whatsappNumber'); });
